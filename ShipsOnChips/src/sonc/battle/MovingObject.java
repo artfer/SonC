@@ -84,7 +84,7 @@ public abstract class MovingObject extends java.lang.Object implements sonc.quad
 	 * 
 	 * @return the speed
 	 */
-	double getSpeed() {
+	public double getSpeed() {
 		
 	}
 	
@@ -166,7 +166,7 @@ public abstract class MovingObject extends java.lang.Object implements sonc.quad
 	 * If either the absolute value of variation, or the 
 	 * absolute value of the changed speed, exceeds their 
 	 * respective predefined maximums ({@link #getMaxSpeedChange()} 
-	 * and {@link #getMaxSpeed()}) then they are limited to 
+	 * and {@link #getMaxSpeed1()}) then they are limited to 
 	 * that value (with the corresponding signal). This method
 	 * cannot be invoked by a concrete ship.
 	 * 
@@ -177,88 +177,120 @@ public abstract class MovingObject extends java.lang.Object implements sonc.quad
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
-	 * Color of this moving object
-	 * @return
+	 * Override this method to define the movement of
+	 * this object. Concrete ships will need to do it
+	 * to implement their strategies.
 	 */
-	abstract java.lang.String getColor(){
-		return /*color*/;
-	}
-	
-	
-	
-	
-	
-	/**
-	 * Damage inflicted by this moving
-	 * object when it hits another
-	 * @return
-	 */
-	private abstract int getImpactDamage() {
+	void move() {
 		
 	}
 	
+	
 	/**
-	 * The maximum rotation per turn 
-	 * of this moving object
-	 * @return
+	 * Change status to reflect damaged inflicted
+	 * by given moving object.
+	 * 
+	 * @param moving - object that hit this one
 	 */
-	private abstract double getMaxRotation() {
+	void hitdBy(MovingObject moving) {
 		
 	}
 	
+	
 	/**
-	 * The maximum speed of this moving
-	 * object in absolute value. 
-	 * @return
+	 * Check if this moving object was destroyed
+	 * 
+	 * @return true if this object is destroyed, 
+	 * false otherwise
 	 */
-	private abstract double getMaxSpeed() {
+	public boolean isDestroyed() {
 		
 	}
+	
+	
+	/**
+	 * Current status of this moving object.
+	 * When status reaches 0 the object is destroyed.
+	 * 
+	 * @return status of this moving object
+	 */
+	public int getStatus() {
+		
+	}
+	
+	
+	/**
+	 * The maximum speed of this moving object
+	 * in absolute value. Ships may have negative
+	 * speed when sailing backwards but the 
+	 * absolute value of the speed cannot exceed 
+	 * this value. 
+	 * 
+	 * @return maximum speed variation
+	 */
+	abstract double getMaxSpeed();
 	
 	
 	/**
 	 * The maximum speed variation in absolute
 	 * value, per turn, of this moving object.
-	 * @return
+	 * 
+	 * @return maximum speed variation
 	 */
-	private abstract double getMaxSpeedChange() {
-		
-	}
+	abstract double getMaxSpeedChange();
+	
+	
+	/**
+	 * The maximum rotation per turn if this 
+	 * moving object.
+	 * 
+	 * @return maximum rotation
+	 */
+	abstract double getMaxRotation();
+	
+	
+	/**
+	 * Damage inflicted by this moving object
+	 * when it hits another.
+	 * 
+	 * @return amount of status removed from
+	 * another moving object on collision 
+	 */
+	abstract int getImpactDamage();
 	
 	
 	/**
 	 * The ship where this moving object originated,
 	 * that must be credited for the damage inflicted
 	 * by this moving object.
-	 * @return
+	 * 
+	 * @return ship from which this moving started
+	 * (or null if a ship)
 	 */
-	private abstract Ship getOrigin() {
-		
-	}
+	abstract Ship getOrigin();
 	
 	
 	/**
 	 * Size of this moving object when displayed.
-	 * @return
+	 * Moving object are represented as elongated 
+	 * object (imagine a cigar) with this size
+	 * 
+	 * @return size of this moving object
 	 */
-	abstract int getSize() {
-		
-	}
+	
+	public abstract int getSize();
 	
 	
-	
-	
+	/**
+	 * Color of this moving object. Different ships 
+	 * may have their own color but most other have
+	 * colors depending of their on type. Colors may
+	 * be set as an HTML/CSS color (e.g. "#0000FF") or
+	 * a name for some basic colors (e.g. "yellow" or "red").
+	 * 
+	 * @return color as a HTML/CSS string or basic color
+	 */
+	public abstract java.lang.String getColor();
 	
 }
