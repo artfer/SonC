@@ -8,6 +8,7 @@ public class Bullet extends Munition{
 	 * @param heading
 	 */
 	Bullet(double heading){
+		super();
 	}
 	
 	/**

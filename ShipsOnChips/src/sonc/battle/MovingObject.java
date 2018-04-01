@@ -12,13 +12,13 @@ public abstract class MovingObject extends java.lang.Object implements sonc.quad
 	 * @param heading - of this moving object at start
 	 * @param speed - of this moving object at start
 	 */
-	MovingObject(int status , double heading, double speed){
+	protected MovingObject(int status , double heading, double speed){
 		this.status = status;
 		this.heading = heading;
 		this.speed=speed;
 	}
-	
-	
+
+
 	/**
 	 * Get X coordinate of this moving object. 
 	 * 
