@@ -1,18 +1,24 @@
 package sonc.battle;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import sonc.shared.Movie;
 
 public class World {
+	static int rounds;
+	static double margin,width,height;
+	static double collisionDistance;
+	Set<MovingObject> movingObjects = new HashSet<>();
+	
 	
 	/**
 	 * Number of rounds in a battle.
 	 * @return round in a battle
 	 */
 	public static int getRounds() {
-		
+		return rounds;
 	}
 	
 	
@@ -24,7 +30,7 @@ public class World {
 	 * @param rounds - in a battle
 	 */
 	static void setRounds(int rounds) {
-		
+		World.rounds=rounds;
 	}
 	
 	
@@ -34,7 +40,7 @@ public class World {
 	 * @return - margin to border when placing ships
 	 */
 	public static double getMargin() {
-		
+		return margin;
 	}
 	
 	
@@ -46,7 +52,7 @@ public class World {
 	 * @param margin - to border when placing ships
 	 */
 	static void setMargin(double margin) {
-		
+		World.margin=margin;
 	}
 	
 	
@@ -55,7 +61,7 @@ public class World {
 	 * @return width of the world
 	 */
 	public static double getWidth() {
-		
+		return width;
 	}
 	
 	
@@ -66,7 +72,7 @@ public class World {
 	 * @param width - of world
 	 */
 	static void setWidth(double width) {
-		
+		World.width=width;
 	}
 	
 	
@@ -75,7 +81,7 @@ public class World {
 	 * @return height of the world
 	 */
 	public static double getHeight() {
-		
+		return height;
 	}
 	
 	
@@ -86,7 +92,7 @@ public class World {
 	 * @param height - of world
 	 */
 	static void setHeight(double height) {
-		
+		World.height=height;
 	}
 	
 	
@@ -96,7 +102,7 @@ public class World {
 	 * @return distance in pixels
 	 */
 	public static double getCollisionDistance() {
-		
+		return collisionDistance;
 	}
 	
 	
@@ -106,7 +112,7 @@ public class World {
 	 * @param collisionDistance - in pixels
 	 */
 	static void setCollisionDistance(double collisionDistance) {
-		
+		World.collisionDistance=collisionDistance;
 	}
 	
 	
@@ -153,7 +159,7 @@ public class World {
 	
 	
 	/**
-	 * Get the number of round from the initial on (round 0).
+	 * Get the number of round from the initial one (round 0).
 	 * The current number of rounds is need keeping delays
 	 * between consecutive firings (of munition). This method
 	 * is available to concrete ships.
@@ -194,7 +200,7 @@ public class World {
 	 * @param added - object
 	 */
 	void addMovingObject(MovingObject added) {
-		
+		movingObjects.add(added);
 	}
 	
 	
@@ -205,7 +211,7 @@ public class World {
 	 * @return set of {@link MovingObject} instances
 	 */
 	Set<MovingObject> getMovingObjects(){
-		
+		return movingObjects;
 	}
 	
 	

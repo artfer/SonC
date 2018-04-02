@@ -1,5 +1,115 @@
 package sonc.battle;
 
+/**
+ * Typer of missile that seeks the target.
+ */
 public class GuidedMissile extends Munition{
-
+	
+	/**
+	 * Created a guided missile with a certain initial heading
+	 * and a target. The initial position with be that of the
+	 * ship that fires the missile.
+	 * @param heading - of the guided missile when fired
+	 * @param target - of the guided missile
+	 */
+	GuidedMissile(double heading,MovingObject target){
+		
+	}
+	
+	
+	/**
+	 * Set the damage by a guided missile in the status
+	 * of the ship it hits. This method should be invoked
+	 * before any battle and <b>cannot</b> be invoked by
+	 * concrete ships. 
+	 * @param damage - inflicted by guided missiles
+	 */
+	public static void setDamage(int damage) {
+		
+	}
+	
+	
+	
+	/**
+	 * Get the damage inflicted by a guided missile in the 
+	 * status of the ship it hits.
+	 * @return damage inflicted by a guided missile
+	 */
+	public static int getDamage() {
+		
+	}
+	
+	
+	/**
+	 * Maximum rotation per turn of any ship.
+	 * @return maximum rotation
+	 */
+	static double getMaxMissileRotation() {
+		
+	}
+	
+	
+	/**
+	 * Set the maximum rotation per turn of a ship.
+	 * This method should be used before instancing ships
+	 * and <b>cannot</b> be invoked by concrete ships.
+	 * @param maxMissileRotation - of guided missiles
+	 */
+	static void setMaxMissileRotation(double maxMissileRotation) {
+		
+	}
+	
+	
+	/**
+	 * Set the initial speed of a guided missile.
+	 * This method should be invoked before any battle.
+	 * @param speed - of guided missile
+	 */
+	public static void setInitialSpeed(double speed) {
+		
+	}
+	
+	
+	/**
+	 * Get the initial speed of a guided missile.
+	 * @return speed of a guided missile
+	 */
+	public static double GetInitialSpeed() {
+		
+	}
+	
+	
+	/**
+	 * Get the delay for firing this king of munition.
+	 * @return delay in number of rounds
+	 */
+	static int getFireDelay() {
+		
+	}
+	
+	
+	/**
+	 * Set the delay for firing this king of munition.
+	 * This method should be invoked before any battle.
+	 * @param fireDelay - number of rounds of delay
+	 */
+	static void setFireDelay(int fireDelay) {
+		
+	}
+	
+	@Override
+	double getMaxRotation() {
+		
+	}
+	
+	
+	
+	@Override
+	void move() {
+		
+	}
+	
+	
+	
+	
 }

@@ -1,5 +1,9 @@
 package sonc.battle;
 
+
+/**
+ * A simple munition that moves in a straight line. 
+ */
 public class Bullet extends Munition{
 	private double heading;
 	
@@ -8,7 +12,7 @@ public class Bullet extends Munition{
 	 * @param heading
 	 */
 	Bullet(double heading){
-		super();
+		
 	}
 	
 	/**
@@ -17,7 +21,7 @@ public class Bullet extends Munition{
 	 * @return
 	 */
 	private int fireDelay() {
-		return 16;
+		
 	}
 	
 	

@@ -81,7 +81,7 @@ public abstract class MovingObject implements sonc.quad.HasPoint {
 	 * @param heading - of moving object
 	 */
 	void setHeading(double heading) {
-		
+		this.heading=heading;
 	}
 	
 	
@@ -91,7 +91,7 @@ public abstract class MovingObject implements sonc.quad.HasPoint {
 	 * @return the speed
 	 */
 	public double getSpeed() {
-		
+		return this.speed;
 	}
 	
 	
