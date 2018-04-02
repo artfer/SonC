@@ -1,6 +1,12 @@
 package sonc.battle;
 
-public abstract class MovingObject extends java.lang.Object implements sonc.quad.HasPoint {
+import java.lang.String;
+
+/**
+ * Common class to all moving objects in the game, including
+ * ships and the munitions they throw at each other
+ */
+public abstract class MovingObject implements sonc.quad.HasPoint {
 	int status;
 	double heading,speed;
 	
@@ -216,7 +222,7 @@ public abstract class MovingObject extends java.lang.Object implements sonc.quad
 	 * @return status of this moving object
 	 */
 	public int getStatus() {
-		
+		return this.status;
 	}
 	
 	
@@ -291,6 +297,6 @@ public abstract class MovingObject extends java.lang.Object implements sonc.quad
 	 * 
 	 * @return color as a HTML/CSS string or basic color
 	 */
-	public abstract java.lang.String getColor();
+	public abstract String getColor();
 	
 }
