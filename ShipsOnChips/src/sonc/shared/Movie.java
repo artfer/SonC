@@ -1,6 +1,7 @@
 package sonc.shared;
 
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,12 +13,15 @@ import java.util.List;
  * represent ships and munitions.
  */
 public class Movie {
+	List<Movie.Frame> frames = new ArrayList<>();
 	
 	/**
 	 * A frame in a movie with a list of oblong
 	 * objects and scores of players.
 	 */
 	public static class Frame{
+		List<Movie.Oblong> oblongs = new ArrayList<>();
+		List<Movie.Score> scores = new ArrayList<>();
 		
 		/**
 		 * Get the oblong objects in this frame.
@@ -25,7 +29,7 @@ public class Movie {
 		 * @return the oblong
 		 */
 		public List<Movie.Oblong> getOblongs(){
-			
+			return this.oblongs;
 		}
 		
 		
@@ -35,7 +39,7 @@ public class Movie {
 		 * @return the scores
 		 */
 		public List<Movie.Score> getScores(){
-			
+			return this.scores;
 		}
 	}
 	
@@ -155,7 +159,7 @@ public class Movie {
 	 * or {@link #addScore()} will add these elements to this frame.
 	 */
 	public void newFrame() {
-		Frame frame = new Frame();
+		frames.add(new Frame());
 	}
 	
 	
@@ -173,7 +177,11 @@ public class Movie {
 	 * frame was created before executing this method
 	 */
 	public void addOblong(int x,int y,float heading,
-							int size,String color) {
+						int size,String color) {
+		if(frames.isEmpty())
+			throw new IllegalStateException();
+		else
+			frames.get(0).oblongs.add(new Oblong(x,y,heading,size,color));
 		
 	}
 	
@@ -189,7 +197,10 @@ public class Movie {
 	 * frame was created before executing this method
 	 */
 	public void addScore(String name,int points,int status) {
-		
+		if(frames.isEmpty())
+			throw new IllegalStateException();
+		else
+			frames.get(0).scores.add(new Score(name,points,status));
 	}
 	
 	
@@ -199,6 +210,6 @@ public class Movie {
 	 * @return list of frames
 	 */
 	public List<Movie.Frame> getFrames(){
-		
+		return this.frames;
 	}
 }
