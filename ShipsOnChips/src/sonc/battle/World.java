@@ -7,7 +7,7 @@ import java.util.Set;
 import sonc.shared.Movie;
 
 public class World {
-	static int rounds;
+	static int rounds,currentRound;
 	static double margin,width,height;
 	static double collisionDistance;
 	Set<MovingObject> movingObjects = new HashSet<>();
@@ -166,7 +166,7 @@ public class World {
 	 * @return currentRound of the battle
 	 */
 	public int getCurrentRound() {
-		
+		return currentRound;
 	}
 	
 	
@@ -178,7 +178,7 @@ public class World {
 	 * @param currentRound - of the battle
 	 */
 	void setCurrentRound(int currentRound) {
-		
+		World.currentRound=currentRound;
 	}
 	
 	

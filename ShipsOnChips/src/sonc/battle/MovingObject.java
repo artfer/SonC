@@ -7,8 +7,9 @@ import java.lang.String;
  * ships and the munitions they throw at each other
  */
 public abstract class MovingObject implements sonc.quad.HasPoint {
-	int status;
-	double heading,speed;
+	static int status;
+	double heading;
+	static double speed;
 	
 	/**
 	 * Initialize a moving object with

@@ -5,14 +5,15 @@ package sonc.battle;
  * A simple munition that moves in a straight line. 
  */
 public class Bullet extends Munition{
-	private double heading;
 	
 	/**
 	 * Create a bullet with a certain heading.
-	 * @param heading
+	 * The initial position with be that of the ship
+	 * that fires the missile.
+	 * @param heading - of the bullet
 	 */
 	Bullet(double heading){
-		
+		super(status, heading,speed);
 	}
 	
 	/**
