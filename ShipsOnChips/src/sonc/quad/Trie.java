@@ -1,5 +1,7 @@
 package sonc.quad;
 
+import java.util.*;
+
 abstract class Trie {
 	private int MAX_OBJECTS=1;	//objects per quadrant
 	private int MAX_LEVELS;		//show it have a limit?
