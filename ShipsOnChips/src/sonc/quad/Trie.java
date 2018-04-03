@@ -2,7 +2,7 @@ package sonc.quad;
 
 import java.util.*;
 
-abstract class Trie {
+public abstract class Trie<T extends HasPoint>{
 	private int MAX_OBJECTS=1;	//objects per quadrant
 	private int MAX_LEVELS;		//show it have a limit?
 		
@@ -28,7 +28,6 @@ abstract class Trie {
 		int subHeight = (int)(bounds.getHeight() / 2);
 		int x = (int)bounds.getX();
 		int y = (int)bounds.getY();
-	 
 		nodes[0] = new Trie(level+1, new Quad(x + subWidth, y, subWidth, subHeight));
 		nodes[1] = new Trie(level+1, new Quad(x, y, subWidth, subHeight));
 		nodes[2] = new Trie(level+1, new Quad(x, y + subHeight, subWidth, subHeight));
