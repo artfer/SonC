@@ -6,6 +6,7 @@ abstract class Munition extends MovingObject{
 		super(status,heading,speed);
 	}
 	
+	
 	/**
 	 * Initial movement from its origin,
 	 * to avoid being considered as hitting it. 
@@ -13,6 +14,7 @@ abstract class Munition extends MovingObject{
 	void escape() {
 		
 	}
+	
 	
 	
 	/**
@@ -24,12 +26,28 @@ abstract class Munition extends MovingObject{
 	abstract int fireDelay();
 	
 	
-	/**
-	 * 
-	 * @param origin
-	 */
-	void setOrigin(Ship origin) {
+	
+	double getMaxSpeedChange() {
+		return ;
 		
+	}
+	
+	
+	
+	double getMaxRotation() {
+	
+	}
+	
+	
+	
+	void setOrigin(Ship origin) {
+		this.origin=origin;
+	}
+	
+	
+	
+	Ship getOrigin() {
+		return origin;
 	}
 	
 	

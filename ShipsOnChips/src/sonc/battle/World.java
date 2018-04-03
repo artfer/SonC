@@ -153,9 +153,9 @@ public class World {
 	 * @param ships - as list of {@link Ship} instances
 	 * @return movie of the battle
 	 */
-	public Movie battle(List<Ship> ships) {
+	/*public Movie battle(List<Ship> ships) {
 		
-	}
+	}*/
 	
 	
 	/**

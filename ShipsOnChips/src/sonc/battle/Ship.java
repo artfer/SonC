@@ -1,5 +1,6 @@
 package sonc.battle;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -18,13 +19,21 @@ import java.util.Set;
  *Other methods can be override, such as:
  *		init() - to initialize the ship
  *		getName() - to assign a name to the ship
- *		getName() - to assign an HTML color to the ship
+ *		getColor() - to assign an HTML color to the ship
  *This can be instantiated as it provides default implementations to all methods 
  *that can be provided by concrete ships. The default definitions are always empty instruction blocks.
  * 
  *
  */
 public class Ship extends MovingObject{
+	static int damage,maxStatus;
+	static double maxShipRotation;
+	static double maxShipSpeedChange;
+	int lastFireRound,points;
+	World world;
+	ShipCommand command;
+	
+	
 	
 	/**
 	 * Set the amount of damage produced by ships.
@@ -34,7 +43,7 @@ public class Ship extends MovingObject{
 	 * @param damage - produced by ships when they colide 
 	 */
 	static void setDamage(int damage) {
-		
+		Ship.damage=damage;
 	}
 	
 	
@@ -44,7 +53,7 @@ public class Ship extends MovingObject{
 	 * @return damage produced by ships when they colide
 	 */
 	static int getDamage() {
-		
+		return damage;
 	}
 	
 	
@@ -53,7 +62,7 @@ public class Ship extends MovingObject{
 	 * @return maximum rotation
 	 */
 	static double getMaxShipRotation() {
-		
+		return maxShipRotation;
 	}
 	
 	
@@ -64,7 +73,7 @@ public class Ship extends MovingObject{
 	 * @param maxShipRotation
 	 */
 	static void setMaxShipRotation(double maxShipRotation) {
-		
+		Ship.maxShipRotation=maxShipRotation;
 	}
 	
 	
@@ -74,7 +83,7 @@ public class Ship extends MovingObject{
 	 * @return maximum speed in absolute value.
 	 */
 	static double getMaxShipSpeedChange() {
-		
+		return maxShipSpeedChange;
 	}
 	
 	
@@ -85,7 +94,7 @@ public class Ship extends MovingObject{
 	 * @param maxShipSpeedChange
 	 */
 	public static void setMaxShipSpeedChange(double maxShipSpeedChange) {
-		
+		Ship.maxShipSpeedChange=maxShipSpeedChange;
 	}
 	
 	
@@ -94,18 +103,18 @@ public class Ship extends MovingObject{
 	 * @return status of ship on start
 	 */
 	static int getMaxStatus() {
-		
+		return maxStatus;
 	}
 	
 	
 	/**
 	 * Set the initial status of any ship.
-	 * It afects ships created afterwards.
+	 * It affects ships created afterwards.
 	 * This method <b>cannot</b> be invoked by concrete ships.
 	 * @param maxStatus - of a ship when it starts
 	 */
 	static void setMaxStatus(int maxStatus) {
-		
+		Ship.maxStatus=maxStatus;
 	}
 	
 	
@@ -115,7 +124,7 @@ public class Ship extends MovingObject{
 	 * @return world instance
 	 */
 	protected World getWorld() {
-		
+		return world;
 	}
 	
 	
@@ -125,7 +134,7 @@ public class Ship extends MovingObject{
 	 * @param world - where the ship will sail
 	 */
 	void setWorld(World world) {
-		
+		this.world=world;
 	}
 	
 	
@@ -136,19 +145,7 @@ public class Ship extends MovingObject{
 	 * if it never fired
 	 */
 	protected int getLastFireRound() {
-		
-	}
-	
-	/**
-	 * Check if this ship can fire the given munition.
-	 * The difference between the current round and the
-	 * last fired round must be greater than the fire delay
-	 * for this munition.
-	 * @param munition - to be fired
-	 * @return true if munition can be fired or false otherwise
-	 */
-	protected boolean canFire(Munition munition) {
-		
+		return lastFireRound;
 	}
 	
 	
@@ -159,8 +156,25 @@ public class Ship extends MovingObject{
 	 * the last time
 	 */
 	void setLastFireRound(int lastFireRound) {
-		
+		this.lastFireRound=lastFireRound;
 	}
+	
+	
+	/**
+	 * Check if this ship can fire the given munition.
+	 * The difference between the current round and the
+	 * last fired round must be greater than the fire delay
+	 * for this munition.
+	 * @param munition - to be fired
+	 * @return true if munition can be fired or false otherwise
+	 */
+	protected boolean canFire(Munition munition) {
+		int dif = world.getRounds() - getLastFireRound();
+		return dif > munition.fireDelay();
+	}
+	
+	
+	
 	
 	
 	/**
@@ -168,7 +182,7 @@ public class Ship extends MovingObject{
 	 * @return command set by concrete ship
 	 */
 	ShipCommand getCommand() {
-		
+		return command;
 	}
 	
 	
@@ -176,12 +190,12 @@ public class Ship extends MovingObject{
 	 * Set a command resulting from a method invoked by
 	 * the {@link #move()} method executed executed by a
 	 * concrete ship. This method should only be invoked
-	 * from a {@code World} instance and <b>cannot</b> be
+	 * from a {@link World} instance and <b>cannot</b> be
 	 * invoked by concrete ships.
 	 * @param command - to be executed
 	 */
 	void setCommand(ShipCommand command) {
-		
+		this.command=command; 
 	}
 	
 	
@@ -190,7 +204,7 @@ public class Ship extends MovingObject{
 	 * @return points as integer
 	 */
 	public int getPoints() {
-		
+		return points;
 	}
 	
 	
@@ -198,7 +212,7 @@ public class Ship extends MovingObject{
 	 * Reset points of this ship to zero.
 	 */
 	void resetPoints() {
-		
+		points=0;
 	}
 	
 	
@@ -207,7 +221,7 @@ public class Ship extends MovingObject{
 	 * @param points - to add to this ship
 	 */
 	void addPoints(int points) {
-		
+		this.points+=points;
 	}
 	
 	
@@ -263,7 +277,12 @@ public class Ship extends MovingObject{
 	 * @return a set of ships
 	 */
 	protected final Set<Ship> getOtherShips(){
-		
+		Set<Ship> ships = new HashSet<>();
+		for(MovingObject object : world.getMovingObjects())
+			if(object.getClass() == Ship.class)
+				ships.add((Ship) object);
+		return ships;
+				
 	}
 	
 	
@@ -271,14 +290,15 @@ public class Ship extends MovingObject{
 	 * Initialize your ship. This method is called when the ship
 	 * starts sailing. Use this method.
 	 */
-	protected void init() {
-		
-	}
+	protected void init() {};
 	
+	
+	/**
+	 * Move your ship. Redefine this method to implement how this
+	 * ship must be moved.
+	 */
 	@Override
-	protected void move() {
-		
-	}
+	protected void move() {};
 	 
 	/**
 	 * The name of this ship.
