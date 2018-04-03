@@ -144,6 +144,10 @@ public abstract class MovingObject implements HasPoint {
 	private double sqrt(double x) {
 		return Math.sqrt(x);
 	}
+	
+	private double abs(double x) {
+		return Math.abs(x);
+	}
 	// 
 
 	/**
@@ -203,7 +207,13 @@ public abstract class MovingObject implements HasPoint {
 	 * @param delta - angle variation (in radians)
 	 */
 	final void doChangeSpeed(double delta) {
-
+		double speedChange = abs(speed-delta);
+		if(speedChange>getMaxSpeedChange())
+			delta = getMaxSpeedChange();
+		double newSpeed = abs(speed+delta);
+		if(newSpeed>getMaxSpeed())
+			newSpeed=getMaxSpeed();
+		speed=newSpeed;
 	}
 
 

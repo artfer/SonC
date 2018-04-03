@@ -6,6 +6,23 @@ import java.util.Set;
 
 import sonc.shared.Movie;
 
+
+/**
+ * A rectangular area where battles take place.
+ * It contains a collection of moving objects, some of which are
+ * ships (others are munitions). It provides methods for updating
+ * the state of moving objects within it. Those that fell of the 
+ * boundaries are automatically discarded, including ships.<br><br>
+ * The state of this class includes a {@link PointQuadTree} for 
+ * managing moving objects and efficiently detecting collisions.
+ * <br><br>There are a number of static properties that parameterize
+ * worlds. Their getters are public but the setter cannot be visible
+ * to concrete ships (those submitted by players).<br><br>
+ * The main method provided by this class is {@link #battle(list)}
+ * that receives a list of {@link Ship} and return a {@link Movie}. 
+ * 
+ *
+ */
 public class World {
 	static int rounds,currentRound;
 	static double margin,width,height;

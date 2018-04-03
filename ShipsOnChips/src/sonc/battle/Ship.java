@@ -4,9 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * The class common to all ships. It is meant to be specialized by concrete ships, 
- * those submitted by players. Concrete ships are expected to be in the default package 
- * (no package declaration) and provide an implementation of the move() method. 
+ * The class common to all ships. 
+ * It is meant to be specialized by concrete ships, those submitted by players. 
+ * Concrete ships are expected to be in the default package (no package 
+ * declaration) and provide an implementation of the move() method. 
  * This method is invoked once per round by the game engine (the World) 
  * and will be able to execute actions such as: 
  * 		rotate(double) - the ship by given angle in radians
@@ -26,6 +27,10 @@ import java.util.Set;
  *
  */
 public class Ship extends MovingObject{
+	protected Ship(int status, double heading, double speed) {
+		super(status, heading, speed);
+	}
+
 	static int damage,maxStatus;
 	static double maxShipRotation;
 	static double maxShipSpeedChange;
