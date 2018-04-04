@@ -1,5 +1,8 @@
 package sonc.battle;
 
+//all methods are written!
+
+
 abstract class Munition extends MovingObject{
 	
 	protected Munition(int status , double heading , double speed){
@@ -27,27 +30,28 @@ abstract class Munition extends MovingObject{
 	
 	
 	
-	double getMaxSpeedChange() {
+	double getMaxSpeedChange() { //specified by
 		return ;
 		
 	}
 	
 	
 	
-	double getMaxRotation() {
+	double getMaxRotation() { //specified by
+		return ;
 	
 	}
 	
 	
 	
 	void setOrigin(Ship origin) {
-		this.origin=origin;
+		
 	}
 	
 	
 	
-	Ship getOrigin() {
-		return origin;
+	Ship getOrigin() { //specified by
+		return ;
 	}
 	
 	

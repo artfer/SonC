@@ -3,6 +3,8 @@ package sonc.battle;
 import java.lang.String;
 import sonc.quad.HasPoint;
 
+//all methods are written
+
 /**
  * Common class to all moving objects in the game, including
  * ships and the munitions they throw at each other.
@@ -44,7 +46,7 @@ public abstract class MovingObject implements HasPoint {
 	/**
 	 * Set X coordinate of this moving object.
 	 * 
-	 * @param x - coordinate of this moving object
+	 * @param x - coordinate of this moving object	
 	 */
 	void setX(double x) {
 		this.x=x;

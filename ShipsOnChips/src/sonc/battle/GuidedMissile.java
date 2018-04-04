@@ -9,6 +9,7 @@ public class GuidedMissile extends Munition{
 	 * Created a guided missile with a certain initial heading
 	 * and a target. The initial position with be that of the
 	 * ship that fires the missile.
+	 * 
 	 * @param heading - of the guided missile when fired
 	 * @param target - of the guided missile
 	 */
@@ -22,6 +23,7 @@ public class GuidedMissile extends Munition{
 	 * of the ship it hits. This method should be invoked
 	 * before any battle and <b>cannot</b> be invoked by
 	 * concrete ships. 
+	 * 
 	 * @param damage - inflicted by guided missiles
 	 */
 	public static void setDamage(int damage) {
@@ -33,19 +35,21 @@ public class GuidedMissile extends Munition{
 	/**
 	 * Get the damage inflicted by a guided missile in the 
 	 * status of the ship it hits.
+	 * 
 	 * @return damage inflicted by a guided missile
 	 */
 	public static int getDamage() {
-		
+		return ;
 	}
 	
 	
 	/**
 	 * Maximum rotation per turn of any ship.
+	 * 
 	 * @return maximum rotation
 	 */
 	static double getMaxMissileRotation() {
-		
+		return ;
 	}
 	
 	
@@ -53,6 +57,7 @@ public class GuidedMissile extends Munition{
 	 * Set the maximum rotation per turn of a ship.
 	 * This method should be used before instancing ships
 	 * and <b>cannot</b> be invoked by concrete ships.
+	 * 
 	 * @param maxMissileRotation - of guided missiles
 	 */
 	static void setMaxMissileRotation(double maxMissileRotation) {
@@ -63,6 +68,7 @@ public class GuidedMissile extends Munition{
 	/**
 	 * Set the initial speed of a guided missile.
 	 * This method should be invoked before any battle.
+	 * 
 	 * @param speed - of guided missile
 	 */
 	public static void setInitialSpeed(double speed) {
@@ -72,32 +78,40 @@ public class GuidedMissile extends Munition{
 	
 	/**
 	 * Get the initial speed of a guided missile.
+	 * 
 	 * @return speed of a guided missile
 	 */
-	public static double GetInitialSpeed() {
-		
+	public static double getInitialSpeed() {
+		return ;
 	}
 	
 	
 	/**
-	 * Get the delay for firing this king of munition.
+	 * Get the delay for firing this kind of munition.
+	 * 
 	 * @return delay in number of rounds
 	 */
 	static int getFireDelay() {
-		
+		return ;
 	}
 	
 	
 	/**
 	 * Set the delay for firing this king of munition.
 	 * This method should be invoked before any battle.
+	 * 
 	 * @param fireDelay - number of rounds of delay
 	 */
 	static void setFireDelay(int fireDelay) {
 		
 	}
 	
-	@Override
+	
+	double getMaxSpeed() { //specified by
+		return ;
+	}
+	
+	
 	double getMaxRotation() {
 		
 	}
