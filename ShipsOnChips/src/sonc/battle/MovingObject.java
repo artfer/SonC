@@ -10,8 +10,9 @@ import sonc.quad.HasPoint;
  * ships and the munitions they throw at each other.
  */
 public abstract class MovingObject implements HasPoint {
-	int status;
-	double heading,speed;
+	static int status;
+	double heading;
+	static double speed;
 	double x,y;
 	
 
@@ -24,9 +25,9 @@ public abstract class MovingObject implements HasPoint {
 	 * @param speed - of this moving object at start
 	 */
 	protected MovingObject(int status , double heading, double speed){
-		this.status = status;
+		MovingObject.status = status;
 		this.heading = heading;
-		this.speed=speed;
+		MovingObject.speed=speed;
 	}
 
 
@@ -102,7 +103,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @return the speed
 	 */
 	public double getSpeed() {
-		return this.speed;
+		return MovingObject.speed;
 	}
 
 
@@ -253,7 +254,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @return status of this moving object
 	 */
 	public int getStatus() {
-		return this.status;
+		return MovingObject.status;
 	}
 
 

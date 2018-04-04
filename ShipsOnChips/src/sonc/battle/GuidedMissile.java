@@ -1,5 +1,7 @@
 package sonc.battle;
 
+//all methods are written
+
 /**
  * Typer of missile that seeks the target.
  */
@@ -13,8 +15,12 @@ public class GuidedMissile extends Munition{
 	 * @param heading - of the guided missile when fired
 	 * @param target - of the guided missile
 	 */
+	
+	static int damage;
+	static double maxRotation;
 	GuidedMissile(double heading,MovingObject target){
-		
+		super(status,heading,speed);
+		// o que fazer com target??
 	}
 	
 	
@@ -27,7 +33,7 @@ public class GuidedMissile extends Munition{
 	 * @param damage - inflicted by guided missiles
 	 */
 	public static void setDamage(int damage) {
-		
+			GuidedMissile.damage=damage;
 	}
 	
 	
@@ -39,7 +45,7 @@ public class GuidedMissile extends Munition{
 	 * @return damage inflicted by a guided missile
 	 */
 	public static int getDamage() {
-		return ;
+		return damage;
 	}
 	
 	
@@ -49,7 +55,7 @@ public class GuidedMissile extends Munition{
 	 * @return maximum rotation
 	 */
 	static double getMaxMissileRotation() {
-		return ;
+		return maxRotation;
 	}
 	
 	
@@ -61,7 +67,7 @@ public class GuidedMissile extends Munition{
 	 * @param maxMissileRotation - of guided missiles
 	 */
 	static void setMaxMissileRotation(double maxMissileRotation) {
-		
+		GuidedMissile.maxRotation=maxMissileRotation;
 	}
 	
 	
@@ -72,7 +78,7 @@ public class GuidedMissile extends Munition{
 	 * @param speed - of guided missile
 	 */
 	public static void setInitialSpeed(double speed) {
-		
+		GuidedMissile.speed = speed;
 	}
 	
 	
@@ -82,7 +88,7 @@ public class GuidedMissile extends Munition{
 	 * @return speed of a guided missile
 	 */
 	public static double getInitialSpeed() {
-		return ;
+		return speed;
 	}
 	
 	
@@ -92,7 +98,7 @@ public class GuidedMissile extends Munition{
 	 * @return delay in number of rounds
 	 */
 	static int getFireDelay() {
-		return ;
+		return fireDelay;
 	}
 	
 	
@@ -103,7 +109,7 @@ public class GuidedMissile extends Munition{
 	 * @param fireDelay - number of rounds of delay
 	 */
 	static void setFireDelay(int fireDelay) {
-		
+		GuidedMissile.fireDelay=fireDelay;
 	}
 	
 	
@@ -112,17 +118,34 @@ public class GuidedMissile extends Munition{
 	}
 	
 	
+	@Override
 	double getMaxRotation() {
-		
+		return ;
 	}
-	
 	
 	
 	@Override
-	void move() {
+	void move() {}
 		
+	
+	int getImpactDamage() { //specified by
+		return ;
 	}
 	
+	
+	int fireDelay() { //specified by
+		return ;
+	}
+	
+	
+	public int getSize() { //specified by
+		return ;
+	}
+	
+	
+	public String getColor() { //specified by
+		return ;
+	}
 	
 	
 	

@@ -16,7 +16,7 @@ public class Bullet extends Munition{
 	 * @param heading - of the bullet
 	 */
 	public Bullet(double heading) {
-		super(heading); // e o resto?
+		super(status,heading,speed); //not sure about this...
 	}
 
 	
@@ -62,7 +62,7 @@ public class Bullet extends Munition{
 	 * @return speed of a bullet
 	 */
 	static double getInitialSpeed() {
-		
+		return ;
 	}
 	
 	
@@ -83,7 +83,7 @@ public class Bullet extends Munition{
 	 * @return delay in number of rounds
 	 */
 	static int getFireDelay() {
-		return
+		return ;
 	}
 	
 	
@@ -91,13 +91,14 @@ public class Bullet extends Munition{
 		return ;
 	}
 	
-	
-	double getMaxSpeedChange() { //specified by 
+	@Override
+	double getMaxSpeedChange() { 
 		return ;
 	}
 	
 	
-	double getMaxRotation() { //specified by
+	@Override
+	double getMaxRotation() {
 		return ;
 	}
 	

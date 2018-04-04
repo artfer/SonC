@@ -4,6 +4,7 @@ package sonc.battle;
 
 
 abstract class Munition extends MovingObject{
+	protected static int fireDelay;
 	
 	protected Munition(int status , double heading , double speed){
 		super(status,heading,speed);
@@ -39,7 +40,6 @@ abstract class Munition extends MovingObject{
 	
 	double getMaxRotation() { //specified by
 		return ;
-	
 	}
 	
 	

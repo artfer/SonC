@@ -1,6 +1,8 @@
 package sonc.battle;
 
 
+//all methods are written
+
 /**
  * This class integrates the concrete part of the <b>Command</b> 
  * design pattern. It defines a change in speed of the ship
