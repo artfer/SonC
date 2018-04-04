@@ -14,7 +14,6 @@ public abstract class MovingObject implements HasPoint {
 	double heading;
 	static double speed;
 	double x,y;
-	private final double IMPACT_DAMAGE=10;
 
 	
 	/**
@@ -132,16 +131,16 @@ public abstract class MovingObject implements HasPoint {
 	 * @return distance to the other 
 	 */
 	protected double distanceTo(MovingObject other) {
-		double a = pow(x-other.getX(),2);
-		double b = pow(y-other.getY(),2);
+		double a = pow(x-other.getX());
+		double b = pow(y-other.getY());
 		return sqrt(a+b);		
 	}
 	
 	//to improve readability
 	private final static double TWO_PI = 2*Math.PI;
 	
-	private double pow(double a, double d) {
-		return Math.pow(a, d);
+	private double pow(double a) {
+		return Math.pow(a,2);
 	}
 	
 	private double sqrt(double x) {

@@ -303,7 +303,44 @@ public class Ship extends MovingObject{
 	 * ship must be moved.
 	 */
 	@Override
-	protected void move() {};
+	protected void move() {}
+
+	@Override
+	double getMaxSpeed() {
+		return 0;
+	}
+
+	@Override
+	double getMaxSpeedChange() {
+		return 0;
+	}
+
+	@Override
+	double getMaxRotation() {
+		return 0;
+	}
+
+	@Override
+	int getImpactDamage() {
+		return 0;
+	}
+
+	@Override
+	Ship getOrigin() {
+		return null;
+	}
+
+	@Override
+	public int getSize() {
+		return 0;
+	}
+
+	@Override
+	public String getColor() {
+		return null;
+	}
+
+	;
 	 
 	/**
 	 * The name of this ship.
@@ -311,7 +348,7 @@ public class Ship extends MovingObject{
 	 * @return name of this ship as a String
 	 */
 	public String getName() {
-		
+		return null;
 	}
 	
 	

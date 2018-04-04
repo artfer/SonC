@@ -51,7 +51,7 @@ abstract class Munition extends MovingObject{
 	
 	
 	Ship getOrigin() { //specified by
-		return ;
+		return origin;
 	}
 	
 	
