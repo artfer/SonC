@@ -10,11 +10,11 @@ import sonc.quad.HasPoint;
  * ships and the munitions they throw at each other.
  */
 public abstract class MovingObject implements HasPoint {
-	static int status;
+	int status;
 	double heading;
 	static double speed;
 	double x,y;
-	
+	private final double IMPACT_DAMAGE=10;
 
 	
 	/**
@@ -25,7 +25,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @param speed - of this moving object at start
 	 */
 	protected MovingObject(int status , double heading, double speed){
-		MovingObject.status = status;
+		this.status = status;
 		this.heading = heading;
 		MovingObject.speed=speed;
 	}
@@ -118,8 +118,9 @@ public abstract class MovingObject implements HasPoint {
 	 * @return normalized angle in range [0,2*PI[
 	 */
 	protected double normalizeAngle(double angle) {
-		double multiplier = angle<0 ?  1 : -1;
-		return multiplier*2*PI+angle;
+		while(angle<0) 		 angle+=TWO_PI;
+		while(angle>=TWO_PI) angle-=TWO_PI;
+		return angle;
 	}
 
 
@@ -131,17 +132,16 @@ public abstract class MovingObject implements HasPoint {
 	 * @return distance to the other 
 	 */
 	protected double distanceTo(MovingObject other) {
-		double a = pow(x-y,2);
-		double b = pow(other.getX()-other.getY(),2);
-		return sqrt(a+b);
-		
+		double a = pow(x-other.getX(),2);
+		double b = pow(y-other.getY(),2);
+		return sqrt(a+b);		
 	}
 	
 	//to improve readability
-	private final static double PI = Math.PI;
+	private final static double TWO_PI = 2*Math.PI;
 	
-	private double pow(double a, int b) {
-		return Math.pow(a, b);
+	private double pow(double a, double d) {
+		return Math.pow(a, d);
 	}
 	
 	private double sqrt(double x) {
@@ -163,10 +163,11 @@ public abstract class MovingObject implements HasPoint {
 	 * @return angle to other object or NaN if some
 	 * coordinates are not defined
 	 */
-	protected double headingTo(MovingObject other) {
+	protected double headingTo(MovingObject other) {//not working
 		double norm = normalizeAngle(heading);
-		double otherNorm = normalizeAngle(other.heading);
-		return norm-otherNorm;
+		double dif = norm;
+		return dif;
+		
 	}
 
 	
@@ -192,9 +193,11 @@ public abstract class MovingObject implements HasPoint {
 	 * @param delta - angle in radians
 	 */
 	final void doRotate(double delta) {
-
+		double maxRotation = getMaxRotation();
+		if(abs(delta)>maxRotation) 
+			delta = delta>=0 ? delta=maxRotation : -maxRotation;
+		this.heading += delta;
 	}
-
 
 	/**
 	 * Change speed of this moving object. 
@@ -233,7 +236,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @param moving - object that hit this one
 	 */
 	void hitdBy(MovingObject moving) {
-
+		this.status -= 10;
 	}
 
 
@@ -243,7 +246,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @return true if this object is destroyed, false otherwise
 	 */
 	public boolean isDestroyed() {
-		return status==0;	
+		return this.status==0;	
 	}
 
 
@@ -254,7 +257,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @return status of this moving object
 	 */
 	public int getStatus() {
-		return MovingObject.status;
+		return this.status;
 	}
 
 

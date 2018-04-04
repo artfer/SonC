@@ -6,8 +6,9 @@ package sonc.battle;
  * A simple munition that moves in a straight line. 
  */
 public class Bullet extends Munition{
-	static int damage;
-	
+	private static int damage;
+	private static double speed;
+	private static int fireDelay;
 	
 	/**
 	 * Create a bullet with a certain heading.
@@ -16,7 +17,7 @@ public class Bullet extends Munition{
 	 * @param heading - of the bullet
 	 */
 	public Bullet(double heading) {
-		super(status,heading,speed); //not sure about this...
+		super(10, heading, speed); //not sure about this...
 	}
 
 	
@@ -52,7 +53,7 @@ public class Bullet extends Munition{
 	 * @param speed - of bullets
 	 */
 	static void setInitialSpeed(double speed) {
-		Bullet.speed=speed; //???
+		Bullet.speed=speed;
 	}
 	
 	
@@ -62,7 +63,7 @@ public class Bullet extends Munition{
 	 * @return speed of a bullet
 	 */
 	static double getInitialSpeed() {
-		return ;
+		return speed;
 	}
 	
 	
@@ -73,7 +74,7 @@ public class Bullet extends Munition{
 	 * @param fireDelay - number of rounds delay
 	 */
 	static void setFireDelay(int fireDelay) {
-		
+		Bullet.fireDelay=fireDelay;
 	}
 	
 	
@@ -83,43 +84,43 @@ public class Bullet extends Munition{
 	 * @return delay in number of rounds
 	 */
 	static int getFireDelay() {
-		return ;
+		return fireDelay;
 	}
 	
 	
 	double getMaxSpeed() { //specified by
-		return ;
+		return speed;
 	}
 	
-	@Override
-	double getMaxSpeedChange() { 
-		return ;
-	}
 	
+	double getMaxSpeedChange() {
+		return (double) 0;
+	}
+
 	
 	@Override
 	double getMaxRotation() {
-		return ;
+		return 0;
 	}
 	
 	
 	int getImpactDamage() { //specified by
-		return ;
+		return damage;
 	}
 	
 	
 	int fireDelay() { //specified by
-		return ;
+		return fireDelay;
 	}
 	
 	
 	public int getSize() { //specified by
-		return ;
+		return 0;
 	}
 	
 	
-	public String getColor() { //specified by
-		return ;
+	public String getColor() {
+		return null;
 	}
 	
 }

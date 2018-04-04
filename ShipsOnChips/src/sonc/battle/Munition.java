@@ -4,7 +4,7 @@ package sonc.battle;
 
 
 abstract class Munition extends MovingObject{
-	protected static int fireDelay;
+	Ship origin;
 	
 	protected Munition(int status , double heading , double speed){
 		super(status,heading,speed);
@@ -32,20 +32,20 @@ abstract class Munition extends MovingObject{
 	
 	
 	double getMaxSpeedChange() { //specified by
-		return ;
+		return 0.0;
 		
 	}
 	
 	
 	
 	double getMaxRotation() { //specified by
-		return ;
+		return 0;
 	}
 	
 	
 	
 	void setOrigin(Ship origin) {
-		
+		this.origin=origin;
 	}
 	
 	
