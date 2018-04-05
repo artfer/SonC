@@ -221,7 +221,7 @@ public abstract class MovingObject implements HasPoint {
 		double maxRotation = getMaxRotation();
 		if(abs(delta)>maxRotation) 
 			delta = delta>=0 ? maxRotation : -maxRotation;
-		this.heading += delta;
+		setHeading(heading+delta);
 	}
 
 	/**
@@ -235,7 +235,7 @@ public abstract class MovingObject implements HasPoint {
 	 * that value (with the corresponding signal). 
 	 * This method cannot be invoked by a concrete ship.
 	 * 
-	 * @param delta - angle variation (in radians)
+	 * @param delta - speed variation (in radians)
 	 */
 	final void doChangeSpeed(double delta) {
 		double speedChange = abs(speed-delta);
@@ -261,8 +261,6 @@ public abstract class MovingObject implements HasPoint {
 	 * @param moving - object that hit this one
 	 */
 	void hitdBy(MovingObject moving) {
-		/*if(this.status==1)
-			status=0;*/
 		this.status -= moving.getImpactDamage();
 	}
 

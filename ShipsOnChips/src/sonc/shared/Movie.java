@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+//passed all tests
+
 /**
  * Data for an animation of the game that can be presented
  * to the player. It is composed of a sequence frames, each

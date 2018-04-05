@@ -43,8 +43,6 @@ public class GuidedMissileTest extends TestData {
 		\*--------------------------------------------------------------*/
 		TestViewer.setVisible(true);	// true to make view animation
 		TestViewer.setDebugging(true); // if you are using the debugger
-
-		WorldViewer.setScale(0.6);
 	}
 	
 	/**
@@ -209,7 +207,7 @@ public class GuidedMissileTest extends TestData {
 		guidedMissile.setY(MARGIN);
 	
 		TestViewer viewer = new TestViewer();
-		
+
 		distance = guidedMissile.distanceTo(ship);
 		do {
 			previous = distance;
@@ -246,7 +244,6 @@ public class GuidedMissileTest extends TestData {
 		TestViewer viewer = new TestViewer();
 		
 		distance = guidedMissile.distanceTo(ship);
-		
 		do {
 			previous = distance;
 			
@@ -257,7 +254,8 @@ public class GuidedMissileTest extends TestData {
 			ship.updatePosition();
 		
 			distance = guidedMissile.distanceTo(ship);
-
+	
+	
 			viewer.frameWith(ship,guidedMissile);
 			
 			assert(distance < previous);
