@@ -177,13 +177,18 @@ public abstract class MovingObject implements HasPoint {
 	 * coordinates are not defined
 	 */
 	protected double headingTo(MovingObject other) {//not working
+		 	 if(x==other.x && y<other.y) return PI/2;
+		else if(x==other.x && y>other.y) return 3*PI/2;
+		else if(x<other.x && y==other.y) return 0;
+		else if(x>other.x && y==other.y) return PI;
 		double hipotenuse = distanceTo(other);
 		double opposite = abs(x-other.x);
 		double alpha = asin(opposite/hipotenuse);
-			 if(x<=other.x && y<other.y) alpha+=0;
-		else if(x<other.x  && y>=other.y)alpha+=PI/2;
-		else if(x>=other.x && y>other.y) alpha+=PI;
-		else if(x>other.x  && y<=other.y)alpha+=3/2*PI;
+			 if(x<other.x && y<other.y) alpha+=0;
+		else if(x<other.x  && y>other.y)alpha+=PI/2;
+		else if(x>other.x && y>other.y) alpha+=PI;
+		else if(x>other.x  && y<other.y)alpha+=3/2*PI;
+		
 		else return 0;
 		return normalizeAngle(alpha-heading);
 		
