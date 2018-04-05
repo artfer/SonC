@@ -176,7 +176,6 @@ public class MovingObjectTest extends TestData {
 		
 		other.setX(100);
 		other.setY(0);
-		
 		assertEquals(0,moving.headingTo(other),DELTA);
 		assertEquals(Math.PI,other.headingTo(moving),DELTA);
 	}
@@ -191,7 +190,7 @@ public class MovingObjectTest extends TestData {
 		
 		other.setX(0);
 		other.setY(100);
-		
+
 		assertEquals(Math.PI/2,moving.headingTo(other),DELTA);
 		assertEquals(3*Math.PI/2,other.headingTo(moving),DELTA);
 	}

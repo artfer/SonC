@@ -1,15 +1,13 @@
 package sonc.battle;
 
-//all methods are written
+//passed all tests
 
 /**
  * A simple munition that moves in a straight line. 
  */
 public class Bullet extends Munition{
-	private static int damage;
-	private static double speed;
+	private static int damage=10; //damage default damage
 	private static int fireDelay;
-	
 	/**
 	 * Create a bullet with a certain heading.
 	 * The initial position with be that of the ship that fires the missile.
@@ -17,7 +15,8 @@ public class Bullet extends Munition{
 	 * @param heading - of the bullet
 	 */
 	public Bullet(double heading) {
-		super(5, heading, speed); //not sure about this...
+		//default status 10
+		super(10, heading, speed); 
 	}
 
 	
@@ -115,12 +114,12 @@ public class Bullet extends Munition{
 	
 	
 	public int getSize() { //specified by
-		return 0;
+		return 1;
 	}
 	
 	
 	public String getColor() {
-		return null;
+		return "grey";
 	}
 	
 }

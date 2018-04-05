@@ -1,6 +1,6 @@
 package sonc.battle;
 
-//all methods are written
+//doesn't pass all tests
 
 /**
  * Typer of missile that seeks the target.
@@ -16,11 +16,15 @@ public class GuidedMissile extends Munition{
 	 * @param target - of the guided missile
 	 */
 	
-	static int damage;
+	static final double guidedSpeed=5;
+	static int damage=10;
+	private static int fireDelay;
 	static double maxRotation;
+	MovingObject target;
 	GuidedMissile(double heading,MovingObject target){
-		super(status,heading,speed);
-		// o que fazer com target??
+		//default status 10
+		super(10,heading,guidedSpeed);
+		this.target = target;
 	}
 	
 	
@@ -114,37 +118,43 @@ public class GuidedMissile extends Munition{
 	
 	
 	double getMaxSpeed() { //specified by
-		return ;
+		return speed;
 	}
 	
 	
 	@Override
 	double getMaxRotation() {
-		return ;
+		return maxRotation;
 	}
 	
 	
 	@Override
-	void move() {}
+	void move() {
+		double targetHeading=headingTo(target);
+		if(heading<=targetHeading+(Math.PI/8)) {
+			doRotate(targetHeading);
+			speed*=1.1;
+		}
+	}
 		
 	
 	int getImpactDamage() { //specified by
-		return ;
+		return damage;
 	}
 	
 	
 	int fireDelay() { //specified by
-		return ;
+		return fireDelay;
 	}
 	
 	
 	public int getSize() { //specified by
-		return ;
+		return 3;
 	}
 	
 	
 	public String getColor() { //specified by
-		return ;
+		return "black";
 	}
 	
 	

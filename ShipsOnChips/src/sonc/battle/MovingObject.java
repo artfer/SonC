@@ -3,7 +3,7 @@ package sonc.battle;
 import java.lang.String;
 import sonc.quad.HasPoint;
 
-//all methods are written
+//passed all tests
 
 /**
  * Common class to all moving objects in the game, including
@@ -25,7 +25,7 @@ public abstract class MovingObject implements HasPoint {
 	 */
 	protected MovingObject(int status , double heading, double speed){
 		this.status = status;
-		this.heading = heading;
+		this.heading = normalizeAngle(heading);
 		MovingObject.speed=speed;
 	}
 
@@ -220,7 +220,7 @@ public abstract class MovingObject implements HasPoint {
 	final void doRotate(double delta) {
 		double maxRotation = getMaxRotation();
 		if(abs(delta)>maxRotation) 
-			delta = delta>=0 ? delta=maxRotation : -maxRotation;
+			delta = delta>=0 ? maxRotation : -maxRotation;
 		this.heading += delta;
 	}
 
@@ -261,6 +261,8 @@ public abstract class MovingObject implements HasPoint {
 	 * @param moving - object that hit this one
 	 */
 	void hitdBy(MovingObject moving) {
+		/*if(this.status==1)
+			status=0;*/
 		this.status -= moving.getImpactDamage();
 	}
 
@@ -271,7 +273,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @return true if this object is destroyed, false otherwise
 	 */
 	public boolean isDestroyed() {
-		return this.status==0;	
+		return this.status<=0;	
 	}
 
 
@@ -353,4 +355,5 @@ public abstract class MovingObject implements HasPoint {
 	 */
 	public abstract String getColor();
 
+	
 }

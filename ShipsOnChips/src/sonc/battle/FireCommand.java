@@ -1,6 +1,6 @@
 package sonc.battle;
 
-//all methods are written
+
 
 /**
  * This class integrates the concrete part of the the Command
@@ -13,7 +13,10 @@ package sonc.battle;
  * the munition {@link Munition#fireDelay()}.
  */
 class FireCommand implements ShipCommand{
-
+	World world;
+	Ship ship;
+	Munition munition;
+	
 	/**
 	 * Create a FireCommand from given data
 	 * @param world - where munition will be created
@@ -21,12 +24,18 @@ class FireCommand implements ShipCommand{
 	 * @param munition - to be fired (may be different types)
 	 */
 	FireCommand(World world,Ship ship,Munition munition){
-		munition.setOrigin(ship);
-		world.addMovingObject(munition);
+		this.world=world;
+		this.ship=ship;
+		this.munition=munition;
 	}
 
 	
-	public void execute() {}
+	public void execute() {
+		if(ship.canFire(munition)) {
+			world.addMovingObject(munition);
+			ship.setLastFireRound(world.getCurrentRound());
+		}
+	}
 
 
 }
