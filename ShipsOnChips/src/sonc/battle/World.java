@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import sonc.shared.Movie;
+import sonc.shared.SoncException;
 
 
 /**
@@ -28,7 +29,7 @@ public class World {
 	static double margin,width,height;
 	static double collisionDistance;
 	Set<MovingObject> movingObjects = new HashSet<>();
-	
+	Set<Ship> ships = new HashSet<>();
 	
 	/**
 	 * Number of rounds in a battle.
@@ -140,7 +141,8 @@ public class World {
 	 * @param ship - to be added
 	 */
 	void addShipAtRandom(Ship ship) {
-		
+		ships.add(ship);
+		movingObjects.add(ship);
 	}
 	
 	
@@ -152,9 +154,24 @@ public class World {
 	 * @param x - coordinate of initial position
 	 * @param y - coordinate of initial position
 	 * @param heading - of ship at the initial position
+	 * 
+	 * @throws SoncException if x or y are out of bounds 
 	 */
-	void addShipAt(Ship ship,double x,double y,double heading) {
+	void addShipAt(Ship ship,double x,double y,double heading) 
+			/*throws SoncException*/ {
+		if(x>width || x<0 || y>width || y<0)
+			/*throw new SoncException("Out of bounds");*/ 
+		ships.add(ship);
+		movingObjects.add(ship);
+		ship.setX(x);
+		ship.setY(y);
+		ship.setHeading(heading);
 		
+	}
+	
+	
+	public Set<Ship> getShips(){
+		return ships;
 	}
 	
 	
@@ -170,9 +187,9 @@ public class World {
 	 * @param ships - as list of {@link Ship} instances
 	 * @return movie of the battle
 	 */
-	/*public Movie battle(List<Ship> ships) {
-		
-	}*/
+	public Movie battle(List<Ship> ships) {
+		return;
+	}
 	
 	
 	/**
@@ -204,7 +221,7 @@ public class World {
 	 * the boundaries , check those that were hit by another one,
 	 * reducing their status, terminating those that reach zero.
 	 * This method uses and creates a new version of the 
-	 * PointQuadTree containing all moving objects in the
+	 * {@link PointQuadTree} containing all moving objects in the
 	 * world instance.
 	 */
 	void update() {

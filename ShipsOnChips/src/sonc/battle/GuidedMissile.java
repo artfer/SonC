@@ -16,10 +16,14 @@ public class GuidedMissile extends Munition{
 	 * @param target - of the guided missile
 	 */
 	
-	static int damage;
+	static int damage=10;
+	private static int fireDelay;
 	static double maxRotation;
+	MovingObject target;
 	GuidedMissile(double heading,MovingObject target){
-		super(status,heading,speed);
+		//default status 10
+		super(10,heading,speed);
+		this.target = target;
 		// o que fazer com target??
 	}
 	
@@ -114,13 +118,13 @@ public class GuidedMissile extends Munition{
 	
 	
 	double getMaxSpeed() { //specified by
-		return ;
+		return speed;
 	}
 	
 	
 	@Override
 	double getMaxRotation() {
-		return ;
+		return maxRotation;
 	}
 	
 	
@@ -129,22 +133,22 @@ public class GuidedMissile extends Munition{
 		
 	
 	int getImpactDamage() { //specified by
-		return ;
+		return damage;
 	}
 	
 	
 	int fireDelay() { //specified by
-		return ;
+		return fireDelay;
 	}
 	
 	
 	public int getSize() { //specified by
-		return ;
+		return 3;
 	}
 	
 	
 	public String getColor() { //specified by
-		return ;
+		return "black";
 	}
 	
 	

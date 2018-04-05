@@ -171,7 +171,9 @@ public class Manager implements Serializable {
 	 * @return movie with game
 	 */
 	public Movie battle(List<String> nicks) {
+		Movie movie = new Movie();
 		
+		return movie;
 	}
 	
 	
@@ -179,7 +181,7 @@ public class Manager implements Serializable {
 	 * Resets players for debugging purposes. 
 	 */
 	void reset() {
-		
+		allPlayers=null;
 	}
 	
 	

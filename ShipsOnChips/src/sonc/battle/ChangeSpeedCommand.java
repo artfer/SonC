@@ -1,8 +1,6 @@
 package sonc.battle;
 
 
-//all methods are written
-
 /**
  * This class integrates the concrete part of the <b>Command</b> 
  * design pattern. It defines a change in speed of the ship
@@ -11,6 +9,8 @@ package sonc.battle;
  * This ensures that a single command is executed per turn.
  */
 class ChangeSpeedCommand implements ShipCommand {
+	private Ship ship;
+	private double delta;
 	
 	/**
 	 * Create a ChangeSpeedCommand from given data
@@ -19,10 +19,13 @@ class ChangeSpeedCommand implements ShipCommand {
 	 * @param delta - variation in speed
 	 */
 	ChangeSpeedCommand(Ship ship,double delta){
-		ship.changeSpeed(delta);
+		this.ship=ship;
+		this.delta=delta;
 	}
 	
 	
-	public void execute() {}
+	public void execute() {
+		ship.doChangeSpeed(delta);
+	}
 
 }

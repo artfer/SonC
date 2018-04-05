@@ -15,9 +15,7 @@ abstract class Munition extends MovingObject{
 	 * Initial movement from its origin,
 	 * to avoid being considered as hitting it. 
 	 */
-	void escape() {
-		
-	}
+	void escape() {}
 	
 	
 	
@@ -53,7 +51,4 @@ abstract class Munition extends MovingObject{
 	Ship getOrigin() { //specified by
 		return origin;
 	}
-	
-	
-	
 }

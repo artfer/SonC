@@ -27,14 +27,16 @@ import java.util.Set;
  *
  */
 public class Ship extends MovingObject{
-	protected Ship(int status, double heading, double speed) {
-		super(status, heading, speed);
+	protected Ship() {
+		super(1000,0,0);//initial status of 1000,heading and speed 0
 	}
-
-	static int damage,maxStatus;
+	
+	
+	static int damage=10,maxStatus;
 	static double maxShipRotation;
 	static double maxShipSpeedChange;
-	int lastFireRound,points;
+	int lastFireRound=Integer.MIN_VALUE;
+	int points;
 	World world;
 	ShipCommand command;
 	
@@ -174,7 +176,9 @@ public class Ship extends MovingObject{
 	 * @return true if munition can be fired or false otherwise
 	 */
 	protected boolean canFire(Munition munition) {
-		int dif = world.getRounds() - getLastFireRound();
+		if(lastFireRound==Integer.MIN_VALUE)
+			return true;
+		int dif = World.getRounds() - lastFireRound;
 		return dif > munition.fireDelay();
 	}
 	
@@ -236,7 +240,7 @@ public class Ship extends MovingObject{
 	 * instance and <b>cannot</b> be invoked by concrete ships.
 	 */
 	void execute(){
-		
+		command.execute();
 	}
 	
 	
@@ -247,7 +251,8 @@ public class Ship extends MovingObject{
 	 * @param delta - variation of speed
 	 */
 	protected final void changeSpeed(double delta) {
-		
+		command = new ChangeSpeedCommand(this,delta);
+		command.execute();
 	}
 	
 	
@@ -260,7 +265,8 @@ public class Ship extends MovingObject{
 	 * @param delta - the rotation angle
 	 */
 	protected final void rotate(double delta) {
-		
+		command = new RotateCommand(this,delta);
+		command.execute();
 	}
 	
 	
@@ -273,7 +279,8 @@ public class Ship extends MovingObject{
 	 * @param munition - to be fired from ship
 	 */
 	protected final void fire(Munition munition) {
-		
+		command = new FireCommand(world, this,munition);
+		command.execute();
 	}
 	
 	
@@ -282,12 +289,7 @@ public class Ship extends MovingObject{
 	 * @return a set of ships
 	 */
 	protected final Set<Ship> getOtherShips(){
-		Set<Ship> ships = new HashSet<>();
-		for(MovingObject object : world.getMovingObjects())
-			if(object.getClass() == Ship.class)
-				ships.add((Ship) object);
-		return ships;
-				
+		return world.ships;
 	}
 	
 	
@@ -322,7 +324,7 @@ public class Ship extends MovingObject{
 
 	@Override
 	int getImpactDamage() {
-		return 0;
+		return damage;
 	}
 
 	@Override
@@ -332,12 +334,12 @@ public class Ship extends MovingObject{
 
 	@Override
 	public int getSize() {
-		return 0;
+		return 20;
 	}
 
 	@Override
 	public String getColor() {
-		return null;
+		return "silver";
 	}
 
 	;
@@ -353,7 +355,9 @@ public class Ship extends MovingObject{
 	
 	
 	
-	
+	public boolean isShip() {
+		return true;
+	}
 	
 	
 	
