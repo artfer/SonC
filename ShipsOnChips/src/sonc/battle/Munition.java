@@ -1,6 +1,6 @@
 package sonc.battle;
 
-//all methods are written!
+//passed all tests
 
 
 abstract class Munition extends MovingObject{

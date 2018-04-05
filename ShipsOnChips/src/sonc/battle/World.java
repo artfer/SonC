@@ -26,7 +26,7 @@ import sonc.shared.SoncException;
  */
 public class World {
 	static int rounds,currentRound;
-	static double margin,width,height;
+	static double margin=1000,width=1000,height;
 	static double collisionDistance;
 	Set<MovingObject> movingObjects = new HashSet<>();
 	Set<Ship> ships = new HashSet<>();

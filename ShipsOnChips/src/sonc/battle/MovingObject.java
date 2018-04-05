@@ -3,7 +3,7 @@ package sonc.battle;
 import java.lang.String;
 import sonc.quad.HasPoint;
 
-//all methods are written
+//passed all tests
 
 /**
  * Common class to all moving objects in the game, including
@@ -220,7 +220,7 @@ public abstract class MovingObject implements HasPoint {
 	final void doRotate(double delta) {
 		double maxRotation = getMaxRotation();
 		if(abs(delta)>maxRotation) 
-			delta = delta>=0 ? delta=maxRotation : -maxRotation;
+			delta = delta>=0 ? maxRotation : -maxRotation;
 		this.heading += delta;
 	}
 

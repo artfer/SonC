@@ -252,7 +252,6 @@ public class Ship extends MovingObject{
 	 */
 	protected final void changeSpeed(double delta) {
 		command = new ChangeSpeedCommand(this,delta);
-		command.execute();
 	}
 	
 	
@@ -266,7 +265,6 @@ public class Ship extends MovingObject{
 	 */
 	protected final void rotate(double delta) {
 		command = new RotateCommand(this,delta);
-		command.execute();
 	}
 	
 	
@@ -280,7 +278,6 @@ public class Ship extends MovingObject{
 	 */
 	protected final void fire(Munition munition) {
 		command = new FireCommand(world, this,munition);
-		command.execute();
 	}
 	
 	
@@ -309,12 +306,12 @@ public class Ship extends MovingObject{
 
 	@Override
 	double getMaxSpeed() {
-		return 0;
+		return 2;
 	}
 
 	@Override
 	double getMaxSpeedChange() {
-		return 0;
+		return maxShipSpeedChange;
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package sonc.battle;
 
-//all methods are written
+//passed all tests
 
 /**
  * A simple munition that moves in a straight line. 
@@ -8,7 +8,6 @@ package sonc.battle;
 public class Bullet extends Munition{
 	private static int damage=10; //damage default damage
 	private static int fireDelay;
-	
 	/**
 	 * Create a bullet with a certain heading.
 	 * The initial position with be that of the ship that fires the missile.
