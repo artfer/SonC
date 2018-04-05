@@ -17,7 +17,7 @@ public class Bullet extends Munition{
 	 * @param heading - of the bullet
 	 */
 	public Bullet(double heading) {
-		super(10, heading, speed); //not sure about this...
+		super(5, heading, speed); //not sure about this...
 	}
 
 	

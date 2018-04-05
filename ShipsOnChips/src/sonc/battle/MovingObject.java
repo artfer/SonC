@@ -92,7 +92,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @param heading - of moving object
 	 */
 	void setHeading(double heading) {
-		this.heading=heading;
+		this.heading=normalizeAngle(heading);
 	}
 
 
@@ -138,6 +138,7 @@ public abstract class MovingObject implements HasPoint {
 	
 	//to improve readability
 	private final static double TWO_PI = 2*Math.PI;
+	private final static double     PI =   Math.PI;
 	
 	private double pow(double a) {
 		return Math.pow(a,2);
@@ -150,6 +151,19 @@ public abstract class MovingObject implements HasPoint {
 	private double abs(double x) {
 		return Math.abs(x);
 	}
+	
+	private double sin(double x) {
+		return Math.sin(x);
+	}
+	
+	private double cos(double x) {
+		return Math.cos(x);
+	}
+	
+	private double asin(double x) {
+		return Math.asin(x);
+	}
+	
 	// 
 
 	/**
@@ -163,9 +177,15 @@ public abstract class MovingObject implements HasPoint {
 	 * coordinates are not defined
 	 */
 	protected double headingTo(MovingObject other) {//not working
-		double norm = normalizeAngle(heading);
-		double dif = norm;
-		return dif;
+		double hipotenuse = distanceTo(other);
+		double opposite = abs(x-other.x);
+		double alpha = asin(opposite/hipotenuse);
+			 if(x<=other.x && y<other.y) alpha+=0;
+		else if(x<other.x  && y>=other.y)alpha+=PI/2;
+		else if(x>=other.x && y>other.y) alpha+=PI;
+		else if(x>other.x  && y<=other.y)alpha+=3/2*PI;
+		else return 0;
+		return normalizeAngle(alpha-heading);
 		
 	}
 
@@ -176,7 +196,8 @@ public abstract class MovingObject implements HasPoint {
 	 * This method cannot be invoked by a concrete ship.
 	 */
 	final void updatePosition() {
-		
+		x+=cos(heading)*speed;
+		y+=sin(heading)*speed;
 	}
 
 
@@ -235,7 +256,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @param moving - object that hit this one
 	 */
 	void hitdBy(MovingObject moving) {
-		this.status -= 10;
+		this.status -= moving.getImpactDamage();
 	}
 
 
