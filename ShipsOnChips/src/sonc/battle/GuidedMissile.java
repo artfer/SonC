@@ -19,7 +19,7 @@ public class GuidedMissile extends Munition{
 	static final double guidedSpeed=5;
 	static int damage=10;
 	private static int fireDelay;
-	static double maxRotation;
+	static double maxRotation=Math.PI;
 	MovingObject target;
 	GuidedMissile(double heading,MovingObject target){
 		//default status 10

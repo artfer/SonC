@@ -14,7 +14,6 @@ public abstract class MovingObject implements HasPoint {
 	double heading;
 	static double speed;
 	double x,y;
-
 	
 	/**
 	 * Initialize a moving object with given status,heading and speed.

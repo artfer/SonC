@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("serial")
 public class Players implements Serializable {
 	List<Player> players= new ArrayList<>();
 	/**
@@ -15,6 +16,8 @@ public class Players implements Serializable {
 	 * otherwise
 	 */
 	boolean register(String nick,String password) {
+		if(nick.split(" ").length>1)
+			return false;
 		for(Player p : players)
 			if(p.getNick().compareTo(nick)==0)
 				return false;
@@ -85,19 +88,5 @@ public class Players implements Serializable {
 			if(p.isShipInstanced())
 				instancedShips.add(p.getNick());
 		return instancedShips;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }

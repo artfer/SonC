@@ -12,6 +12,7 @@ import sonc.utils.AgentBuilder;
  * this class records the player's authentication
  * and the last code submitted.
  */
+@SuppressWarnings("serial")
 public class Player implements Serializable {
 	private String nick,password,code;
 	private Ship ship;
@@ -67,7 +68,7 @@ public class Player implements Serializable {
 			AgentBuilder builder = new AgentBuilder();
 			ship=builder.getInstance(Ship.class, code, nick );
 		} catch (Exception e) {
-			throw new SoncException("Something went wrong");
+			throw new SoncException("Unexpected exception");
 		}
 	}
 
@@ -85,9 +86,8 @@ public class Player implements Serializable {
 			checkCode();
 			return ship;
 		} catch (SoncException e) {
-			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 	
 	

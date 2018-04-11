@@ -1,9 +1,8 @@
 package sonc.battle;
 
 
-//all test passed 
+//passed all tests
 
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -30,18 +29,21 @@ import java.util.Set;
  *
  */
 public class Ship extends MovingObject{
+	
 	protected Ship() {
-		super(1000,0,0);//initial status of 1000,heading and speed 0
+		super(maxStatus,0,0);//initial status of 1000,heading and speed 0
 	}
 	
 	
-	static int damage=10,maxStatus;
-	static double maxShipRotation;
+	static int damage,maxStatus;
+	static double maxShipRotation,maxSpeed;
 	static double maxShipSpeedChange;
 	int lastFireRound=Integer.MIN_VALUE;
-	int points;
+	private int points;
 	World world;
 	ShipCommand command;
+	String name;
+	String color = "silver";
 	
 	
 	
@@ -103,7 +105,7 @@ public class Ship extends MovingObject{
 	 * This method <b>cannot</b> be invoked by concrete ships.
 	 * @param maxShipSpeedChange
 	 */
-	public static void setMaxShipSpeedChange(double maxShipSpeedChange) {
+	static void setMaxShipSpeedChange(double maxShipSpeedChange) {
 		Ship.maxShipSpeedChange=maxShipSpeedChange;
 	}
 	
@@ -175,6 +177,7 @@ public class Ship extends MovingObject{
 	 * The difference between the current round and the
 	 * last fired round must be greater than the fire delay
 	 * for this munition.
+	 * 
 	 * @param munition - to be fired
 	 * @return true if munition can be fired or false otherwise
 	 */
@@ -186,11 +189,9 @@ public class Ship extends MovingObject{
 	}
 	
 	
-	
-	
-	
 	/**
 	 * The latest command set by the concrete ship.
+	 * 
 	 * @return command set by concrete ship
 	 */
 	ShipCommand getCommand() {
@@ -204,6 +205,7 @@ public class Ship extends MovingObject{
 	 * concrete ship. This method should only be invoked
 	 * from a {@link World} instance and <b>cannot</b> be
 	 * invoked by concrete ships.
+	 * 
 	 * @param command - to be executed
 	 */
 	void setCommand(ShipCommand command) {
@@ -224,7 +226,7 @@ public class Ship extends MovingObject{
 	 * Reset points of this ship to zero.
 	 */
 	void resetPoints() {
-		points=0;
+		this.points=0;
 	}
 	
 	
@@ -256,7 +258,6 @@ public class Ship extends MovingObject{
 	protected final void changeSpeed(double delta) {
 		command = new ChangeSpeedCommand(this,delta);
 	}
-	
 	
 	
 	/**
@@ -309,7 +310,11 @@ public class Ship extends MovingObject{
 
 	@Override
 	double getMaxSpeed() {
-		return 2;
+		return maxSpeed;
+	}
+	
+	void setMaxSpeed(double maxSpeed) {
+		Ship.maxSpeed=maxSpeed;
 	}
 
 	@Override
@@ -319,7 +324,7 @@ public class Ship extends MovingObject{
 
 	@Override
 	double getMaxRotation() {
-		return 0;
+		return maxShipRotation;
 	}
 
 	@Override
@@ -339,10 +344,8 @@ public class Ship extends MovingObject{
 
 	@Override
 	public String getColor() {
-		return "silver";
+		return color;
 	}
-
-	;
 	 
 	/**
 	 * The name of this ship.
@@ -350,13 +353,7 @@ public class Ship extends MovingObject{
 	 * @return name of this ship as a String
 	 */
 	public String getName() {
-		return null;
-	}
-	
-	
-	
-	public boolean isShip() {
-		return true;
+		return name;
 	}
 	
 	

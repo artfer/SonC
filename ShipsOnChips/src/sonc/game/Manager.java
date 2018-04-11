@@ -18,6 +18,7 @@ import sonc.shared.SoncException;
  * design pattern to provide a single instance
  * of this class to the application.
  */
+@SuppressWarnings("serial")
 public class Manager implements Serializable {
 	Players allPlayers;
 	static File managerFile;
@@ -26,6 +27,7 @@ public class Manager implements Serializable {
 	
 	/**
 	 * Name of file containing manager's data.
+	 * 
 	 * @return file containing serialization
 	 */
 	public static File getPlayersFile() {
@@ -36,12 +38,12 @@ public class Manager implements Serializable {
 	/**
 	 * Change pathname of file containing 
 	 * manager's data.
+	 * 
 	 * @param managerFile - contain serialization
 	 */
 	public static void setPlayersFile(File managerFile) {
 		Manager.managerFile = managerFile;
 	}
-	
 	
 	
 	/**
@@ -62,7 +64,7 @@ public class Manager implements Serializable {
 			else
 				return manager;
 		} catch (Exception e) {
-			throw new SoncException("Something's wrong");
+			throw new SoncException("");
 		}
 	}
 	
@@ -70,10 +72,13 @@ public class Manager implements Serializable {
 	/**
 	 * Register a player with given nick and password.
 	 * Changes are stored in serialization file.
+	 * 
 	 * @param userId - of user
 	 * @param password - id user
+	 * 
 	 * @return true if registered and false
 	 * otherwise
+	 * 
 	 * @throws SoncException if I/O error occurs
 	 * when serializing data 
 	 */
@@ -82,7 +87,7 @@ public class Manager implements Serializable {
 		try {
 			return allPlayers.register(userId, password);
 		} catch (Exception e) {
-			throw new SoncException("sdsad");
+			throw new SoncException("");
 		}
 	}
 	
@@ -90,10 +95,13 @@ public class Manager implements Serializable {
 	
 	/**
 	 * Change password if old password matches the current one.
+	 * 
 	 * @param nick - of player 
 	 * @param oldPassword - for authentication before update
 	 * @param newPassord - after update
+	 * 
 	 * @return true if password change and false otherwise
+	 * 
 	 * @throws SoncException if I/O error occurs when serializing data
 	 */
 	public boolean updatePassword(String nick,String oldPassword,
@@ -101,7 +109,7 @@ public class Manager implements Serializable {
 		try {
 			return allPlayers.updatePassword(nick, oldPassword, newPassword);
 		} catch (Exception e) {
-			throw new SoncException("sdasd");
+			throw new SoncException("");
 		} 
 	}
 	
@@ -119,9 +127,12 @@ public class Manager implements Serializable {
 	
 	/**
 	 * Return last submitted code by the authenticated user.
+	 * 
 	 * @param nick - of player
 	 * @param password - of player
+	 * 
 	 * @return code of player's ship
+	 * 
 	 * @throws SoncException if nick is unknown or password invalid
 	 */
 	public String getCurrentCode(String nick,String password) 
@@ -130,13 +141,14 @@ public class Manager implements Serializable {
 	}
 	
 	
-	
 	/**
 	 * Set ship's code and try to instance it, for given user and
 	 * from given code.
+	 * 
 	 * @param nick - of the player
 	 * @param password - of the player
 	 * @param code - the compile and instance
+	 * 
 	 * @throws SoncException if nick is unknown, password is
 	 * invalid, code has errors or an I/O error occurred
 	 */
@@ -148,7 +160,7 @@ public class Manager implements Serializable {
 				allPlayers.getPlayer(nick).instanceShip();
 			}
 		} catch (Exception e) {
-			throw new SoncException("sdasdsa");
+			throw new SoncException("");
 		}
 	}
 	
@@ -156,6 +168,7 @@ public class Manager implements Serializable {
 	/**
 	 * Returns a sorted list of all registered players' nicks with ships.
 	 * These nicks can be used in a simulation.
+	 * 
 	 * @return list of strings
 	 */
 	List<String> getPlayersNamesWithShips(){
@@ -167,7 +180,9 @@ public class Manager implements Serializable {
 	 * Simulate a battle with ships of given players.
 	 * Ships are shuffled in random order (using 
 	 * java.Collection.shuffle() method).
+	 * 
 	 * @param nicks - of players in this game
+	 * 
 	 * @return movie with game
 	 */
 	public Movie battle(List<String> nicks) {

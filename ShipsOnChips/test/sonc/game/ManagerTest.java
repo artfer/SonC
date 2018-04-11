@@ -1,5 +1,8 @@
 package sonc.game;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -27,6 +30,10 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testRegister() throws SoncException {
+		assertTrue(manager.register("player", "123"));
+		
+		assertFalse(manager.register("player", "321"));
+		
 		
 	}
 	

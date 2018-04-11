@@ -29,14 +29,13 @@ abstract class Munition extends MovingObject{
 	
 	
 	
-	double getMaxSpeedChange() { //specified by
-		return 0.0;
-		
+	double getMaxSpeedChange() {
+		return 0;	
 	}
 	
 	
 	
-	double getMaxRotation() { //specified by
+	double getMaxRotation() {
 		return 0;
 	}
 	
@@ -48,7 +47,7 @@ abstract class Munition extends MovingObject{
 	
 	
 	
-	Ship getOrigin() { //specified by
+	Ship getOrigin() {
 		return origin;
 	}
 }
