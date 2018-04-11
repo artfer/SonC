@@ -106,7 +106,7 @@ public class FireCommandTest extends TestData {
 		world.setCurrentRound(ship.getLastFireRound() + otherBullet.fireDelay() + 1);
 		
 		otherFireCommand.execute();
-
+		
 		assertEquals("another bullet in the world",2,world.getMovingObjects().size());
 		
 	}

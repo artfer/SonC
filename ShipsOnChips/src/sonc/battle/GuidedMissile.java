@@ -1,6 +1,6 @@
 package sonc.battle;
 
-//doesn't pass all tests
+//doesn't pass all tests, missing move()
 
 /**
  * Typer of missile that seeks the target.
@@ -131,10 +131,8 @@ public class GuidedMissile extends Munition{
 	@Override
 	void move() {
 		double targetHeading=headingTo(target);
-		if(heading<=targetHeading+(Math.PI/8)) {
-			doRotate(targetHeading);
-			speed*=1.1;
-		}
+		
+		
 	}
 		
 	

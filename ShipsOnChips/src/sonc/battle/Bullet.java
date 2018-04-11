@@ -6,7 +6,7 @@ package sonc.battle;
  * A simple munition that moves in a straight line. 
  */
 public class Bullet extends Munition{
-	private static int damage=10; //damage default damage
+	private static int damage=10; //bullets default damage
 	private static int fireDelay;
 	/**
 	 * Create a bullet with a certain heading.

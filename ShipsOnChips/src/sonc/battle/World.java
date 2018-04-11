@@ -6,6 +6,7 @@ import java.util.Set;
 
 import sonc.shared.Movie;
 import sonc.shared.SoncException;
+import sonc.utils.SafeExecutor;
 
 
 /**
@@ -26,13 +27,21 @@ import sonc.shared.SoncException;
  */
 public class World {
 	static int rounds,currentRound;
-	static double margin=1000,width=1000,height;
+	static double margin,width,height;
 	static double collisionDistance;
-	Set<MovingObject> movingObjects = new HashSet<>();
-	Set<Ship> ships = new HashSet<>();
+	Set<MovingObject> movingObjects;
+	Set<Ship> ships;
+	SafeExecutor safeExecutor; 
+	
+	World(){
+		movingObjects = new HashSet<>();
+		safeExecutor = new SafeExecutor();
+		ships = new HashSet<>();
+	}
 	
 	/**
 	 * Number of rounds in a battle.
+	 * 
 	 * @return round in a battle
 	 */
 	public static int getRounds() {
@@ -45,6 +54,7 @@ public class World {
 	 * This method should be executed before
 	 * battles and cannot be visible to 
 	 * concrete ships.
+	 * 
 	 * @param rounds - in a battle
 	 */
 	static void setRounds(int rounds) {
@@ -55,6 +65,7 @@ public class World {
 	/**
 	 * Margin from border used for placing ships
 	 * within the world.
+	 * 
 	 * @return - margin to border when placing ships
 	 */
 	public static double getMargin() {
@@ -67,6 +78,7 @@ public class World {
 	 * ships within the world. This method should
 	 * be executed before battles and cannot be visible
 	 * to concrete ships.
+	 * 
 	 * @param margin - to border when placing ships
 	 */
 	static void setMargin(double margin) {
@@ -87,6 +99,7 @@ public class World {
 	 * Set the width of the world. This method should
 	 * be executed before battles and cannot be 
 	 * visible to concrete ships.
+	 * 
 	 * @param width - of world
 	 */
 	static void setWidth(double width) {
@@ -96,6 +109,7 @@ public class World {
 	
 	/**
 	 * The height of the world.
+	 * 
 	 * @return height of the world
 	 */
 	public static double getHeight() {
@@ -107,6 +121,7 @@ public class World {
 	 * Set the height of the world. This method
 	 * should be executed before battles and cannot
 	 * be visible to concrete ships.
+	 * 
 	 * @param height - of world
 	 */
 	static void setHeight(double height) {
@@ -117,6 +132,7 @@ public class World {
 	/**
 	 * Minimum distance between object to be considered
 	 * as a collision.
+	 * 
 	 * @return distance in pixels
 	 */
 	public static double getCollisionDistance() {
@@ -127,6 +143,7 @@ public class World {
 	/**
 	 * Set minimum distance between object to be
 	 * considered as a collision.
+	 * 
 	 * @param collisionDistance - in pixels
 	 */
 	static void setCollisionDistance(double collisionDistance) {
@@ -138,6 +155,7 @@ public class World {
 	 * Add a ship to this world. Set it in a
 	 * random position. Initialize the ship and
 	 * reset its points.
+	 * 
 	 * @param ship - to be added
 	 */
 	void addShipAtRandom(Ship ship) {
@@ -150,12 +168,11 @@ public class World {
 	 * Add a ship to this world. Define position and heading.
 	 * Initialize the ship and reset its points. This method
 	 * is useful for testing.
+	 * 
 	 * @param ship - to be added
 	 * @param x - coordinate of initial position
 	 * @param y - coordinate of initial position
 	 * @param heading - of ship at the initial position
-	 * 
-	 * @throws SoncException if x or y are out of bounds 
 	 */
 	void addShipAt(Ship ship,double x,double y,double heading) 
 			/*throws SoncException*/ {
@@ -178,7 +195,7 @@ public class World {
 	/**
 	 * Make a battle with given ships. The battle unfolds for a
 	 * number of rounds defined by the rounds property. The init()
-	 * method of each of these ships is invoked in the begining, 
+	 * method of each of these ships is invoked in the beginning, 
 	 * and the method move() in invoked in each turn. These two
 	 * methods are invoked trough the safe executor. If they raise
 	 * any exception, including those due to timeout or to attempt
