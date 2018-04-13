@@ -5,7 +5,7 @@ import sonc.battle.Ship;
 /**
  * Ship that neither moves nor responds to attacks 
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class SittingDuckBot extends Ship {
 

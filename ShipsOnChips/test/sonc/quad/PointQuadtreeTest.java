@@ -26,7 +26,7 @@ import org.junit.Test;
  * {@code inserReplace()} and {@code delete()} methods,
  * implemented through delegation on the root trie.
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class PointQuadtreeTest {
 

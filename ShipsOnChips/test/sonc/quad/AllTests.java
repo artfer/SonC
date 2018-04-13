@@ -7,7 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 /**
  * Test suite from the arcatch.quad package
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  *
  */
 @RunWith(Suite.class)

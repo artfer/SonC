@@ -1,7 +1,6 @@
 package sonc.game;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -10,6 +9,10 @@ import org.junit.Test;
 import sonc.TestData;
 import sonc.shared.SoncException;
 
+/**
+ * Template for a test class on Manager - YOU NEED TO IMPLEMENTS THESE TESTS!
+ * 
+ */
 public class ManagerTest extends TestData {
 	static Manager manager;
 	
@@ -30,11 +33,7 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testRegister() throws SoncException {
-		assertTrue(manager.register("player", "123"));
-		
-		assertFalse(manager.register("player", "321"));
-		
-		
+		fail();
 	}
 	
 	/**
@@ -44,7 +43,7 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testUpdatePassword() throws SoncException {
-		
+		fail();
 	}
 
 	/**
@@ -54,7 +53,7 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testAuthenticate() throws SoncException {
-		
+		fail();
 	}
 
 	/**
@@ -65,7 +64,7 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testBuildShip() throws SoncException {
-
+		fail();
 	}
 	
 	/**
@@ -75,7 +74,7 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testGetCurrentCode() throws SoncException {
-		
+		fail();
 	}
 
 
@@ -86,7 +85,7 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testGetPlayersNamesWithShips() {
-		
+		fail();
 	}
 
 	/**
@@ -95,6 +94,6 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testBattle() {
-		
+		fail();
 	}
 }

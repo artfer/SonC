@@ -16,7 +16,7 @@ import org.junit.Test;
  * Test the implemented methods from the abstract
  * type {@code Trie} 
  * 
- * @author José paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class LeafTrieTest {
 	

@@ -15,7 +15,7 @@ import sonc.battle.World;
 /**
  * Test command for rotating ships
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class RotateCommandTest extends TestData {
 	public static final double MAX_ROTATION = Math.PI/6;

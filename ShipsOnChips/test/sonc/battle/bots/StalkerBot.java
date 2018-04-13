@@ -8,7 +8,7 @@ import sonc.battle.Ship;
 /**
  * Ship that stalks the nearest enemy while shoting it
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class StalkerBot extends BasicShip {
 	final static int CRUISING_SPEED = 10;

@@ -21,11 +21,11 @@ import java.util.TimerTask;
 /**
  * Creates an animation to view the evolution of the world.
  * The animation is a sequence of frames. A new frame is created with 
- * the <code>newFrame()</code> method. Subsequent calls to the methods
- * <code>addRect()</code> or <code>addScore()</code> will respectively 
- * add rectangles and scores to the current frame.
+ * the {@link #newFrame()} method. Subsequent calls to the methods
+ * {@link #addOblong(int,int,float,int,String)} or {@link #addScore(String,int,int)} 
+ * will respectively add oblongs and scores to the current frame.
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class WorldViewer extends Frame {
 
@@ -110,8 +110,8 @@ public class WorldViewer extends Frame {
 	 * 
 	 */
 	static class Frame {
-		List<Oblong> oblongs = new ArrayList<>();
-		List<Score> scores = new ArrayList<>(); 	
+		private List<Oblong> oblongs = new ArrayList<>();
+		private List<Score> scores = new ArrayList<>(); 	
 		
 		/**
 		 * Show the frame content using given graphics
@@ -133,11 +133,11 @@ public class WorldViewer extends Frame {
 	 * An oblong (like a cigar) shaped object
 	 */
 	static class Oblong {
-		int x;
-		int y;
-		float heading;
-		int size;
-		String color;
+		private int x;
+		private int y;
+		private float heading;
+		private int size;
+		private String color;
 		
 		public Oblong(int x, int y, float heading,int size,String color) {
 			super();
@@ -187,9 +187,9 @@ public class WorldViewer extends Frame {
 	 * The score of a game agent
 	 */
 	static class Score {
-		String name;
-		int points;
-		int status;
+		private String name;
+		private int points;
+		private int status;
 		
 		public Score(String name, int points, int status) {
 			super();
@@ -198,11 +198,11 @@ public class WorldViewer extends Frame {
 			this.status = status;
 		}
 		
-		static FontMetrics fontMetrics;
-		static int top;
-		static int nameWidth; 
-		static int pointsWidth;
-		static int statusWidth;
+		private static FontMetrics fontMetrics;
+		private static int top;
+		private static int nameWidth; 
+		private static int pointsWidth;
+		private static int statusWidth;
 		
 		/**
 		 * Perform preparatory computations to layout scores
@@ -210,7 +210,7 @@ public class WorldViewer extends Frame {
 		 * @param graphics where scores will be painted
 		 * @param scores list of scores
 		 */
-		static void prepare(Graphics graphics,List<Score> scores) {
+		private static void prepare(Graphics graphics,List<Score> scores) {
 			top = 100;
 			fontMetrics = graphics.getFontMetrics(FONT1);
 			
@@ -325,6 +325,9 @@ public class WorldViewer extends Frame {
 		strategy = getBufferStrategy();		
 	}
 	
+	/**
+	 * Wait until all frames are displayed
+	 */
 	public void waitForExit() {
 		while(frames.size() == 0 || currentFrame+1 < frames.size()) {
 			try {

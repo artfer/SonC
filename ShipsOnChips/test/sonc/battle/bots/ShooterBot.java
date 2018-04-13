@@ -6,7 +6,7 @@ import sonc.battle.Ship;
 /**
  * Stationary ships that shoots to the nearest enemy
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class ShooterBot extends BasicShip {
 	

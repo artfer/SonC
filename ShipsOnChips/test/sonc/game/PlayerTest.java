@@ -8,19 +8,26 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import sonc.TestData;
 import sonc.battle.Ship;
 import sonc.shared.SoncException;
+import sonc.utils.AgentBuilder;
 
 /**
  * Tests on Player - a participant on SonC games, with nick, password and code
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class PlayerTest extends TestData {
 	Player player;
+	
+	@BeforeClass
+	public static void setUpClass() {
+		AgentBuilder.addToClassPath(MY_CLASS_PATH); // YOU MAY NEED TO CHANGE THE CLASS PATH!
+	}
 	
 	@Before
 	public void setUp() throws Exception {

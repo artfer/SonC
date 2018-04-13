@@ -12,7 +12,7 @@ import sonc.TestData;
 /**
  * Test command for changing speed
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class ChangeSpeedCommandTest extends TestData {
 	private static final int MAX_SPEED_CHANGE=2;

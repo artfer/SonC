@@ -7,17 +7,24 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import sonc.TestData;
+import sonc.utils.AgentBuilder;
 
 /**
  * Tests on Players - a collection of Player indexed by nick
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class PlayersTest extends TestData {
 	Players players ;
+	
+	@BeforeClass
+	public static void setUpClass() {
+		AgentBuilder.addToClassPath(MY_CLASS_PATH); // YOU MAY NEED TO CHANGE THE CLASS PATH!
+	}
 	
 	@Before
 	public void setUp() throws Exception {

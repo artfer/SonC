@@ -15,7 +15,7 @@ import sonc.TestData;
 /**
  * Test moving objects, the abstract class common to all objects in a battle
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class MovingObjectTest extends TestData {
 	private static final int STATUS = 1000;

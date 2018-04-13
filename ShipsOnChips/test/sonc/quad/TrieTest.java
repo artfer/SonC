@@ -10,7 +10,7 @@ import org.junit.Test;
  * Checks the static method {@code getDistance()} and on the static 
  * getters and setters  of the capacity property.
  * 
- * @author José paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class TrieTest {
 	

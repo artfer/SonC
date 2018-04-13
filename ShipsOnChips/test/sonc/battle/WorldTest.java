@@ -25,7 +25,7 @@ import sonc.utils.WorldViewer;
 /**
  * Tests on the world were battles take place
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt }
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt }
  */
 public class WorldTest extends TestData {
 	
@@ -37,7 +37,7 @@ public class WorldTest extends TestData {
 		World.setWidth(SIDE);
 		World.setHeight(SIDE);
 		World.setMargin(MARGIN);
-		World.setCollisionDistance(RADIUS);
+		World.setCollisionDistance(COLLISION_DISTANCE);
 		
 		WorldViewer.setStopFrequency(0);
 		WorldViewer.setScale(SCALE);

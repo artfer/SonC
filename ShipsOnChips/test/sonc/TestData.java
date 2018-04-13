@@ -8,11 +8,13 @@ import java.util.Date;
  * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class TestData {
+	protected static final String MY_CLASS_PATH="war/WEB-INF/classes";
+	
 	protected static final double SIDE = 1000;
 	protected static final double MARGIN = 100;
 	protected static final int STATUS = 1000;
-	protected static final double RADIUS = 10;
 	protected static final double BULLET_SPEED = 20;
+	protected static final double COLLISION_DISTANCE = 10;
 	protected static final double SCALE = 0.8; // reduce this if you have a small screen
 
 	protected static final String INVALID_NICK = "Player ZERO";

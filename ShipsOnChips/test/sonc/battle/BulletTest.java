@@ -14,7 +14,7 @@ import sonc.TestData;
 /**
  * Test bullets fired from ships
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class BulletTest extends TestData {
 	private static final int SPEED = 20;
@@ -22,11 +22,12 @@ public class BulletTest extends TestData {
 	Bullet bullet;
 	
 	/**
-	 * Define initial speed of bullets
+	 * Define initial speed of bullets and collision distance
 	 */
 	@BeforeClass
 	public static void setUpClass() {
 		Bullet.setInitialSpeed(SPEED);
+		World.setCollisionDistance(COLLISION_DISTANCE);
 	}
 	
 	/**

@@ -20,7 +20,7 @@ import sonc.battle.bots.StalkerBot;
 /**
 * Test super class common to all ships
 * 
-* @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+* @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
 */
 
 public class ShipTest extends TestData {

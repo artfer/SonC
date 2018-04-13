@@ -18,7 +18,7 @@ import sonc.utils.WorldViewer;
 /**
  * Test guided missiles fired from ships
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class GuidedMissileTest extends TestData {
 	private static final int SPEED = 5;
@@ -41,8 +41,9 @@ public class GuidedMissileTest extends TestData {
 		/*--------------------------------------------------------------*\
 		 *                 Change this to visualize tests               *
 		\*--------------------------------------------------------------*/
-		TestViewer.setVisible(true);	// true to make view animation
-		TestViewer.setDebugging(true); // if you are using the debugger
+		TestViewer.setVisible(false);	// true to make view animation
+		TestViewer.setDebugging(false); // if you are using the debugger
+
 	}
 	
 	/**
@@ -207,7 +208,7 @@ public class GuidedMissileTest extends TestData {
 		guidedMissile.setY(MARGIN);
 	
 		TestViewer viewer = new TestViewer();
-
+		
 		distance = guidedMissile.distanceTo(ship);
 		do {
 			previous = distance;

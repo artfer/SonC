@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * safe execution, where the concrete class must implement the {@code Runnable}
  * interface.
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class SafeExecutor {
 
@@ -69,6 +69,8 @@ public class SafeExecutor {
 			if(enforce) {
 				if(perm.getActions().endsWith("read") && checkPrefix(perm.getName()) ) {
 					// allow reading local and eclipse files
+				} else if(perm.getName().equals("modifyThread")) {
+					// the executor used for timeout may need to perform some thread modifications
 				} else if(perm.getName().startsWith("exitVM")) {
 					throw new SecurityException(
 							"access denied (\"java.lang.RuntimePermission\" \"exit\")");
@@ -101,40 +103,41 @@ public class SafeExecutor {
 	}
 
 	/**
-	 * Executes given runnable in a safe environment.
-	 * 
+	 * Executes given runnable in a safe environment. Execution is limited to
+	 * the previous set timeout and to a strict security manager. It cannot 
+	 * access the file system, the operating system, the network or any other
+	 * sensitive resource. Runnable execution is synchronized since.
 	 * 
 	 * @param runnable the method to execute safely
 	 * @throws Exception when errors occur in runnable, it tries to use system 
 	 *  resources or timeout is exceeded   
 	 */
-	static public void executeSafelly(Runnable runnable) throws Exception {
+	 static public void executeSafelly(Runnable runnable) throws Exception {
 		ExecutorService executor = Executors.newFixedThreadPool(1);
 		List<Exception> errors = new ArrayList<>();
 		
-		executor.execute(()  -> {
-			security.tight();
+		synchronized(security) {
+			executor.execute(()  -> {
+				security.tight();
+				try {
+					runnable.run();
+				} catch(Exception e){
+					errors.add(e);
+				} finally {
+					security.relaxed();
+				}
+			});
+			executor.shutdown();
 			try {
-				runnable.run();
-			} catch(Exception e){
+				if(! executor.awaitTermination(timeout, TimeUnit.MILLISECONDS)) {
+					errors.add(new RuntimeException("Timeout"));
+				}			
+			} catch (InterruptedException e) {
 				errors.add(e);
 			} finally {
-			    security.relaxed();
+				security.relaxed();
 			}
-		});
-		
-		executor.shutdown();
-		
-		try {
-			if(! executor.awaitTermination(timeout, TimeUnit.MILLISECONDS)) {
-				errors.add(new RuntimeException("Timeout"));
-			}			
-		} catch (InterruptedException e) {
-			errors.add(e);
-		} finally {
-			security.relaxed();
 		}
-		
 		if(errors.size() > 0) 
 			throw errors.get(0);
 	}

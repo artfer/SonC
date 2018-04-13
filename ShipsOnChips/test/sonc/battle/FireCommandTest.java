@@ -13,7 +13,7 @@ import sonc.utils.WorldViewer;
 /**
  * Test command for firing munitions
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class FireCommandTest extends TestData {
 	FireCommand fireCommand;
@@ -26,7 +26,7 @@ public class FireCommandTest extends TestData {
 		World.setWidth(SIDE);
 		World.setHeight(SIDE);
 		World.setMargin(MARGIN);
-		World.setCollisionDistance(RADIUS);
+		World.setCollisionDistance(COLLISION_DISTANCE);
 		
 		WorldViewer.setStopFrequency(0);
 		WorldViewer.setScale(SCALE);

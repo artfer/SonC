@@ -16,7 +16,7 @@ import sonc.shared.Movie.Score;
 /**
  * Tests on Movie - a visualization of a battle
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class MovieTest extends TestData {
 	Movie movie = new Movie();

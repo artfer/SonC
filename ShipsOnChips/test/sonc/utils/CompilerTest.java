@@ -12,15 +12,27 @@ import java.nio.file.Paths;
 import javax.naming.NameNotFoundException;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import sonc.TestData;
 import sonc.battle.Ship;
 
-public class CompilerTest {
+/**
+ * Tests on compiler - utility for compiling bots
+ * 
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
+ */
+public class CompilerTest extends TestData {
 	static final String SOURCE_FILE = "sonc/utils/MyShip.txt";
 	
 	AgentBuilder compiler;
 	String code;
+	
+	@BeforeClass
+	public static void setUpClass() {
+		AgentBuilder.addToClassPath(MY_CLASS_PATH); // YOU MAY NEED TO CHANGE THE CLASS PATH!
+	}
 	
 	@Before
 	public void setUp() throws Exception {

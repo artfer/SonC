@@ -8,7 +8,7 @@ import sonc.TestData;
 
 /**
  * Exceptions raised by SonC
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class SoncExceptionTest extends TestData {
 

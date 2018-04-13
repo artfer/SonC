@@ -6,6 +6,11 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests on safe executor - utility for executing bots in a safe environment
+ * 
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
+ */
 public class SafeExecutorTest {
 	
 	@Before

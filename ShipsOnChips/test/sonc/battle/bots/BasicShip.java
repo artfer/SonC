@@ -9,7 +9,7 @@ import sonc.battle.Ship;
 /**
  * Abstract ship with a couple of useful methods
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt }
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt }
  */
 public abstract class BasicShip extends Ship {
 

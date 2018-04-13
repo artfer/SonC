@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import sonc.TestData;
@@ -19,7 +20,7 @@ import sonc.battle.bots.StalkerBot;
 /**
  * Test munition, the abstract class common to all munitions fired by ships in a battle
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 public class MunitionTest extends TestData {
 	TestMunition munition;
@@ -65,6 +66,15 @@ public class MunitionTest extends TestData {
 			return DELAY;
 		}
 		
+	}
+	
+	
+	/**
+	 * Define initial speed of bullets and collision distance
+	 */
+	@BeforeClass
+	public static void setUpClass() {
+		World.setCollisionDistance(COLLISION_DISTANCE);
 	}
 	
 	/**

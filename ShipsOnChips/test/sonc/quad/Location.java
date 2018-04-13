@@ -3,7 +3,7 @@ package sonc.quad;
 /**
  * Helper test class implementing the HasPoint interface
  * 
- * @author José Paulo Leal {@code zp@dcc.fc.up.pt}
+ * @author Jos&eacute; Paulo Leal {@code zp@dcc.fc.up.pt}
  */
 class Location implements HasPoint {
 	
