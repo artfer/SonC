@@ -1,5 +1,6 @@
 package sonc.game;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.lang.String;
 
@@ -16,8 +17,9 @@ import sonc.utils.AgentBuilder;
 public class Player implements Serializable {
 	private String nick,password,code;
 	private Ship ship;
+	AgentBuilder builder;
 	
-	Player(String nick,String password){
+	Player(String nick,String password) throws IOException{
 		this.nick=nick;
 		this.password=password;
 	}
@@ -65,7 +67,7 @@ public class Player implements Serializable {
 	 */
 	void checkCode() throws SoncException{
 		try {
-			AgentBuilder builder = new AgentBuilder();
+			builder = new AgentBuilder();
 			ship=builder.getInstance(Ship.class, code, nick );
 		} catch (Exception e) {
 			throw new SoncException("Unexpected exception");
