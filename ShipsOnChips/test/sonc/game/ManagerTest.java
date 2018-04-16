@@ -5,6 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -62,9 +64,10 @@ public class ManagerTest extends TestData {
 	 * Check authentication valid and invalid tokens and multiple users
 	 * 
 	 * @throws SoncException on reading serialization file (not tested)
+	 * @throws IOException 
 	 */
 	@Test
-	public void testAuthenticate() throws SoncException {
+	public void testAuthenticate() throws SoncException, IOException {
 		manager.register(NICKS[0], PASSWORDS[0]);
 		
 		assertTrue(manager.authenticate(NICKS[0], PASSWORDS[0]));
@@ -99,9 +102,10 @@ public class ManagerTest extends TestData {
 	 * Check that number of players with ships increases only
 	 * when a ship is build for a player (not just registering him/her),
 	 * for more than a single player
+	 * @throws SoncException 
 	 */
 	@Test
-	public void testGetPlayersNamesWithShips() {
+	public void testGetPlayersNamesWithShips() throws SoncException {
 		assertEquals(0,manager.getPlayersNamesWithShips().size());
 		
 		manager.register(NICKS[0], PASSWORDS[0]);

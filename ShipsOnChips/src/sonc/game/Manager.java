@@ -1,6 +1,12 @@
 package sonc.game;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,15 +24,30 @@ import sonc.shared.SoncException;
  * design pattern to provide a single instance
  * of this class to the application.
  */
-@SuppressWarnings("serial")
 public class Manager implements Serializable {
 	Players allPlayers;
 	static File managerFile;
 	private static Manager manager = null;
+	FileOutputStream fileOut;
+	ObjectOutputStream out;
+	FileInputStream fileIn;
+	ObjectInputStream in;
 	
 	
-	Manager(){
+	Manager() {
 		allPlayers=new Players();
+	}
+	
+	
+	
+	private void openOut() throws IOException {
+		fileOut = new FileOutputStream(managerFile);
+		out = new ObjectOutputStream(fileOut);
+	}
+	
+	private void closeOut() throws IOException {
+		out.close();
+		fileOut.close();
 	}
 	
 	/**
@@ -89,13 +110,19 @@ public class Manager implements Serializable {
 	public boolean register(String userId,String password) 
 			throws SoncException {
 		try {
-			return allPlayers.register(userId, password);
+			boolean reg = allPlayers.register(userId, password);
+			if(reg) {
+				openOut();
+				out.writeObject(allPlayers);
+				closeOut();
+			}
+			return reg;
 		} catch (Exception e) {
 			throw new SoncException("");
 		}
 	}
-	
-	
+
+
 	
 	/**
 	 * Change password if old password matches the current one.
@@ -111,7 +138,13 @@ public class Manager implements Serializable {
 	public boolean updatePassword(String nick,String oldPassword,
 			String newPassword) throws SoncException {
 		try {
-			return allPlayers.updatePassword(nick, oldPassword, newPassword);
+			boolean update = allPlayers.updatePassword(nick, oldPassword, newPassword);
+			if(update) {
+				openOut();
+				out.writeObject(allPlayers);
+				closeOut();
+			}
+			return update; 
 		} catch (Exception e) {
 			throw new SoncException("");
 		} 
@@ -123,9 +156,16 @@ public class Manager implements Serializable {
 	 * @param nick - of user to authenticate
 	 * @param password - of user to authenticate
 	 * @return true if authenticate and false otherwise
+	 * @throws IOException 
 	 */
-	public boolean authenticate(String nick,String password) {
-		return allPlayers.authenticate(nick, password);
+	public boolean authenticate(String nick,String password) throws IOException {
+		boolean auth = allPlayers.authenticate(nick, password);
+		if(auth) {
+			openOut();
+			out.writeObject(allPlayers.register(nick, password));
+			closeOut();
+		}
+		return auth;
 	}
 	
 	
