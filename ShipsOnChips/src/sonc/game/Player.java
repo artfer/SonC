@@ -19,7 +19,7 @@ public class Player implements Serializable {
 	private Ship ship;
 	AgentBuilder builder;
 	
-	Player(String nick,String password) throws IOException{
+	Player(String nick,String password){
 		this.nick=nick;
 		this.password=password;
 	}

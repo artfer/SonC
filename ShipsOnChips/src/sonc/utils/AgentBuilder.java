@@ -18,6 +18,8 @@ import javax.naming.NameNotFoundException;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
+import org.junit.BeforeClass;
+
 /**
  * Players send Java code that must be compiled and instanced. 
  * The submitted code is expected to be in the default package (no package declaration)
@@ -166,8 +168,9 @@ public class AgentBuilder {
 	 * 
 	 * @param cp class path directory
 	 */
+	@BeforeClass
 	public static void addToClassPath(String cp) {
-		classPaths.add(cp);
+		classPaths.add("/home/artfer/git/SonC/ShipsOnChips/src/sonc/battle/Ship.java");
 	}
 	
 	/**
