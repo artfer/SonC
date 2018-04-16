@@ -25,6 +25,10 @@ public class Manager implements Serializable {
 	private static Manager manager = null;
 	
 	
+	Manager(){
+		allPlayers=new Players();
+	}
+	
 	/**
 	 * Name of file containing manager's data.
 	 * 

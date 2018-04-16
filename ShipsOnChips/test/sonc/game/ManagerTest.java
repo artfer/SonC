@@ -1,5 +1,6 @@
 package sonc.game;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -101,7 +102,23 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testGetPlayersNamesWithShips() {
-		fail();
+		assertEquals(0,manager.getPlayersNamesWithShips().size());
+		
+		manager.register(NICKS[0], PASSWORDS[0]);
+		
+		assertEquals(0,manager.getPlayersNamesWithShips().size());
+		
+		manager.allPlayers.getPlayer(NICKS[0]).setCode(EMPTY_SHIP_CODE);
+		
+		assertEquals(1,manager.getPlayersNamesWithShips().size());
+		
+		manager.register(NICKS[1], PASSWORDS[1]);
+		
+		assertEquals(1,manager.getPlayersNamesWithShips().size());
+		
+		manager.allPlayers.getPlayer(NICKS[1]).setCode(EMPTY_SHIP_CODE);
+		
+		assertEquals(2,manager.getPlayersNamesWithShips().size());
 	}
 
 	/**
