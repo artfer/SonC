@@ -170,7 +170,7 @@ public class AgentBuilder {
 	 */
 	@BeforeClass
 	public static void addToClassPath(String cp) {
-		classPaths.add("/home/artfer/git/SonC/ShipsOnChips/src/sonc/battle/Ship.java");
+		classPaths.add(cp);
 	}
 	
 	/**

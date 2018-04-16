@@ -55,6 +55,7 @@ public class Player implements Serializable {
 	 */
 	void setCode(String code) {
 		this.code=code;
+		instanceShip();
 	}
 	
 	

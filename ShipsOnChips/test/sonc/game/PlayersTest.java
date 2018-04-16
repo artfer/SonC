@@ -23,7 +23,7 @@ public class PlayersTest extends TestData {
 	
 	@BeforeClass
 	public static void setUpClass() {
-		AgentBuilder.addToClassPath(MY_CLASS_PATH); // YOU MAY NEED TO CHANGE THE CLASS PATH!
+		AgentBuilder.addToClassPath("/home/artfer/git/SonC/ShipsOnChips/bin/"); // YOU MAY NEED TO CHANGE THE CLASS PATH!
 	}
 	
 	@Before

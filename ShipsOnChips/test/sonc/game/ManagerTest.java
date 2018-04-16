@@ -1,5 +1,7 @@
 package sonc.game;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
@@ -8,6 +10,7 @@ import org.junit.Test;
 
 import sonc.TestData;
 import sonc.shared.SoncException;
+import sonc.utils.AgentBuilder;
 
 /**
  * Template for a test class on Manager - YOU NEED TO IMPLEMENTS THESE TESTS!
@@ -18,12 +21,12 @@ public class ManagerTest extends TestData {
 	
 	@BeforeClass
 	public static void setUpClass() throws SoncException {
-		manager = Manager.getInstance();
+		AgentBuilder.addToClassPath("/home/artfer/git/SonC/ShipsOnChips/bin/"); // YOU MAY NEED TO CHANGE THE CLASS PATH!
 	}
 	
 	@Before
 	public void setUp() throws Exception {
-		manager.reset();
+		manager = new Manager();
 	}
 
 	/**
@@ -33,7 +36,11 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testRegister() throws SoncException {
-		fail();
+		assertFalse("Invalid nick",manager.register(INVALID_NICK, PASSWORDS[0]));
+		assertTrue("Valid nick",manager.register(NICKS[0], PASSWORDS[0]));
+		assertFalse("Duplicate nick",manager.register(NICKS[0], PASSWORDS[0]));
+		assertTrue("Valid nick",manager.register(NICKS[1], PASSWORDS[1]));
+		assertFalse("Duplicate nick",manager.register(NICKS[1], PASSWORDS[0]));
 	}
 	
 	/**
@@ -43,7 +50,11 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testUpdatePassword() throws SoncException {
-		fail();
+		manager.register(NICKS[0], PASSWORDS[0]);
+		
+		assertTrue(manager.updatePassword(NICKS[0], PASSWORDS[0], PASSWORDS[1]));
+		assertFalse(manager.updatePassword(NICKS[0], PASSWORDS[0], PASSWORDS[1]));
+		assertTrue(manager.updatePassword(NICKS[0], PASSWORDS[1], PASSWORDS[0]));
 	}
 
 	/**
@@ -53,7 +64,12 @@ public class ManagerTest extends TestData {
 	 */
 	@Test
 	public void testAuthenticate() throws SoncException {
-		fail();
+		manager.register(NICKS[0], PASSWORDS[0]);
+		
+		assertTrue(manager.authenticate(NICKS[0], PASSWORDS[0]));
+		assertFalse(manager.authenticate(NICKS[0], PASSWORDS[1]));
+		assertFalse(manager.authenticate(NICKS[1], PASSWORDS[1]));
+		assertFalse(manager.authenticate(NICKS[1], PASSWORDS[0]));
 	}
 
 	/**
