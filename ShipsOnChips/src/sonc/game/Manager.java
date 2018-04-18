@@ -2,7 +2,6 @@ package sonc.game;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -24,6 +23,7 @@ import sonc.shared.SoncException;
  * design pattern to provide a single instance
  * of this class to the application.
  */
+@SuppressWarnings("serial")
 public class Manager implements Serializable {
 	Players allPlayers;
 	static File managerFile;
@@ -112,9 +112,9 @@ public class Manager implements Serializable {
 		try {
 			boolean reg = allPlayers.register(userId, password);
 			if(reg) {
-				openOut();
-				out.writeObject(allPlayers);
-				closeOut();
+				//openOut();
+				//out.writeObject(allPlayers);
+				//closeOut();
 			}
 			return reg;
 		} catch (Exception e) {
@@ -140,9 +140,9 @@ public class Manager implements Serializable {
 		try {
 			boolean update = allPlayers.updatePassword(nick, oldPassword, newPassword);
 			if(update) {
-				openOut();
-				out.writeObject(allPlayers);
-				closeOut();
+				//openOut();
+				//out.writeObject(allPlayers);
+				//closeOut();
 			}
 			return update; 
 		} catch (Exception e) {
@@ -161,9 +161,9 @@ public class Manager implements Serializable {
 	public boolean authenticate(String nick,String password) throws IOException {
 		boolean auth = allPlayers.authenticate(nick, password);
 		if(auth) {
-			openOut();
-			out.writeObject(allPlayers.register(nick, password));
-			closeOut();
+			//openOut();
+			//out.writeObject(allPlayers.register(nick, password));
+			//closeOut();
 		}
 		return auth;
 	}
@@ -180,8 +180,11 @@ public class Manager implements Serializable {
 	 * @throws SoncException if nick is unknown or password invalid
 	 */
 	public String getCurrentCode(String nick,String password) 
-			throws SoncException{
-		return allPlayers.getPlayer(nick).getCode();
+			throws Exception{
+		if(authenticate(nick,password))
+			return allPlayers.getPlayer(nick).getCode();
+		else 
+			throw new SoncException("Invalid user or password");
 	}
 	
 	
@@ -231,7 +234,6 @@ public class Manager implements Serializable {
 	 */
 	public Movie battle(List<String> nicks) {
 		Movie movie = new Movie();
-		
 		return movie;
 	}
 	

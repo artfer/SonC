@@ -1,6 +1,5 @@
 package sonc.battle;
 
-//passed all tests
 
 /**
  * This class integrates the concrete part of the <b>Command</b> 

@@ -15,7 +15,12 @@ abstract class Munition extends MovingObject{
 	 * Initial movement from its origin,
 	 * to avoid being considered as hitting it. 
 	 */
-	void escape() {}
+	void escape() {
+		/*while(this.distanceTo(origin)<World.getCollisionDistance()) {
+			updatePosition();
+		}
+		*/
+	}
 	
 	
 	

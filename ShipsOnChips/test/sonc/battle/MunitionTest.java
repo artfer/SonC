@@ -111,10 +111,11 @@ public class MunitionTest extends TestData {
 	@Test
 	public void testEscape() {
 		Ship ship = new StalkerBot();
-		
 		ship.setX(X);
 		ship.setY(Y);
 		ship.setHeading(HEADING);
+		
+		munition.setOrigin(ship);
 		
 		munition.setX(X);
 		munition.setY(Y);

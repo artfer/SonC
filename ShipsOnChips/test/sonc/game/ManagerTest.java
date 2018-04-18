@@ -2,6 +2,7 @@ package sonc.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -93,8 +94,11 @@ public class ManagerTest extends TestData {
 	 * @throws SoncException on reading serialization file (not tested)
 	 */
 	@Test
-	public void testGetCurrentCode() throws SoncException {
-		fail();
+	public void testGetCurrentCode() throws Exception {
+		assertNull(manager.getCurrentCode(NICKS[0],PASSWORDS[0]));
+		
+		manager.buildShip(NICKS[0],PASSWORDS[0],EMPTY_SHIP_CODE);
+		assertEquals(EMPTY_SHIP_CODE,manager.getCurrentCode(NICKS[0],PASSWORDS[0]));
 	}
 
 

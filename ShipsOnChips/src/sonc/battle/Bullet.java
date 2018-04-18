@@ -1,6 +1,6 @@
 package sonc.battle;
 
-//passed all tests
+//falta o escape
 
 /**
  * A simple munition that moves in a straight line. 

@@ -28,7 +28,7 @@ import sonc.utils.SafeExecutor;
 public class World {
 	static int rounds,currentRound;
 	static double margin,width,height;
-	static double collisionDistance;
+	static double collisionDistance=10;
 	Set<MovingObject> movingObjects;
 	Set<Ship> ships;
 	SafeExecutor safeExecutor; 
@@ -205,7 +205,8 @@ public class World {
 	 * @return movie of the battle
 	 */
 	public Movie battle(List<Ship> ships) {
-		return;
+		Movie movie = new Movie();
+		return movie;
 	}
 	
 	
