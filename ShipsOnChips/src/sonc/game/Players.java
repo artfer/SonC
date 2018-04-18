@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("serial")
+
 public class Players implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	List<Player> players= new ArrayList<>();
 	/**
 	 * Register a player with a given nick 

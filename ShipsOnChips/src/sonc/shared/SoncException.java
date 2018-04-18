@@ -4,6 +4,7 @@ package sonc.shared;
 
 public class SoncException extends Exception{
 	
+	
 	private static final long serialVersionUID = 1L;
 
 	public SoncException(String message,Throwable cause,
