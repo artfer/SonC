@@ -1,8 +1,5 @@
 package sonc.quad;
 
-import java.util.*;
-import java.lang.*;
-
 public abstract class Trie<T extends HasPoint>{
 	protected double topLeftX;
 	protected double topLeftY;
@@ -18,11 +15,12 @@ public abstract class Trie<T extends HasPoint>{
 		this.bottomRightY=bottomRightY;
 	}
 	
-	enum Quadrant { NE,NW,SE,SW }
+	/*enum Quadrant { NE,NW,SE,SW }
 	public static final Trie.Quadrant NE;
 	public static final Trie.Quadrant NW;
 	public static final Trie.Quadrant SE;
 	public static final Trie.Quadrant SW;
+	*/
 	
 	/**
 	 * Get capacity of a bucket

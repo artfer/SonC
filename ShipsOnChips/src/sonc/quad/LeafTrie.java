@@ -1,7 +1,5 @@
 package sonc.quad;
 
-import java.lang.*;
-
 class LeafTrie<T extends HasPoint> extends Trie<T> {
 
 	LeafTrie(double topLeftX, double topLeftY,
