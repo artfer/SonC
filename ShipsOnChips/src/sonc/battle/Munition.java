@@ -16,10 +16,10 @@ abstract class Munition extends MovingObject{
 	 * to avoid being considered as hitting it. 
 	 */
 	void escape() {
-		/*while(this.distanceTo(origin)<World.getCollisionDistance()) {
-			updatePosition();
+		while(this.distanceTo(origin)<World.getCollisionDistance()) {
+			this.setX(this.getX()+Math.cos(heading));
+			this.setY(this.getY()+Math.sin(heading));
 		}
-		*/
 	}
 	
 	

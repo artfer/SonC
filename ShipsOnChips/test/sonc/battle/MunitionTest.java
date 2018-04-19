@@ -115,17 +115,16 @@ public class MunitionTest extends TestData {
 		ship.setY(Y);
 		ship.setHeading(HEADING);
 		
-		munition.setOrigin(ship);
+		munition.setOrigin(ship);//added
 		
 		munition.setX(X);
 		munition.setY(Y);
 		munition.setHeading(HEADING);
-
+		
 		assertEquals(0,ship.distanceTo(munition),DELTA);
 		assertEquals(0,munition.distanceTo(ship),DELTA);
 		
 		munition.escape();
-		
 		assertTrue(ship.distanceTo(munition) >= World.getCollisionDistance());
 		assertTrue(munition.distanceTo(ship) >= World.getCollisionDistance());
 	}

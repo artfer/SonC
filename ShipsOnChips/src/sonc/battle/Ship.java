@@ -36,7 +36,7 @@ public class Ship extends MovingObject{
 	
 	
 	static int damage,maxStatus;
-	static double maxShipRotation,maxSpeed;
+	static double maxShipRotation,maxSpeed=5;
 	static double maxShipSpeedChange;
 	int lastFireRound=Integer.MIN_VALUE;
 	private int points;

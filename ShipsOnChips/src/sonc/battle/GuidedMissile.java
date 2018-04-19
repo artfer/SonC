@@ -1,6 +1,6 @@
 package sonc.battle;
 
-//doesn't pass all tests, missing move()
+//passed all tests
 
 /**
  * Typer of missile that seeks the target.
@@ -16,14 +16,15 @@ public class GuidedMissile extends Munition{
 	 * @param target - of the guided missile
 	 */
 	
-	static final double guidedSpeed=5;
+	static double initialSpeed=5;
 	static int damage=10;
 	private static int fireDelay;
 	static double maxRotation=Math.PI;
 	MovingObject target;
+	
 	GuidedMissile(double heading,MovingObject target){
 		//default status 10
-		super(10,heading,guidedSpeed);
+		super(10,heading,initialSpeed);
 		this.target = target;
 	}
 	
@@ -82,7 +83,7 @@ public class GuidedMissile extends Munition{
 	 * @param speed - of guided missile
 	 */
 	public static void setInitialSpeed(double speed) {
-		GuidedMissile.speed = speed;
+		initialSpeed = speed;
 	}
 	
 	
@@ -92,7 +93,7 @@ public class GuidedMissile extends Munition{
 	 * @return speed of a guided missile
 	 */
 	public static double getInitialSpeed() {
-		return speed;
+		return initialSpeed;
 	}
 	
 	
@@ -131,8 +132,7 @@ public class GuidedMissile extends Munition{
 	@Override
 	void move() {
 		double targetHeading=headingTo(target);
-		
-		
+		this.doRotate(targetHeading-heading);
 	}
 		
 	

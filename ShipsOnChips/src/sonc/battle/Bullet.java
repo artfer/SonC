@@ -8,6 +8,7 @@ package sonc.battle;
 public class Bullet extends Munition{
 	private static int damage=10; //bullets default damage
 	private static int fireDelay;
+	private static double initialSpeed;
 	/**
 	 * Create a bullet with a certain heading.
 	 * The initial position with be that of the ship that fires the missile.
@@ -16,7 +17,7 @@ public class Bullet extends Munition{
 	 */
 	public Bullet(double heading) {
 		//default status 10
-		super(10, heading, speed); 
+		super(10, heading, initialSpeed); 
 	}
 
 	
@@ -52,7 +53,7 @@ public class Bullet extends Munition{
 	 * @param speed - of bullets
 	 */
 	static void setInitialSpeed(double speed) {
-		Bullet.speed=speed;
+		initialSpeed=speed;
 	}
 	
 	
@@ -62,7 +63,7 @@ public class Bullet extends Munition{
 	 * @return speed of a bullet
 	 */
 	static double getInitialSpeed() {
-		return speed;
+		return initialSpeed;
 	}
 	
 	

@@ -102,6 +102,8 @@ public class BulletTest extends TestData {
 		ship.setY(100);
 		ship.setHeading(0);
 		
+		bullet.setOrigin(ship);//added
+		
 		for(double heading: ANGLES) {
 			bullet.setX(ship.getX());
 			bullet.setY(ship.getY());

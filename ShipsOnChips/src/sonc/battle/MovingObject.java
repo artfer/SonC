@@ -12,12 +12,12 @@ import sonc.quad.HasPoint;
 public abstract class MovingObject implements HasPoint {
 	int status;
 	double heading;
-	static double speed;
+	double speed;
 	double x,y;
 	
 	/**
 	 * Initialize a moving object with given status,heading and speed.
-	 * 
+	 * s
 	 * @param status - of this moving object at start
 	 * @param heading - of this moving object at start
 	 * @param speed - of this moving object at start
@@ -25,7 +25,7 @@ public abstract class MovingObject implements HasPoint {
 	protected MovingObject(int status , double heading, double speed){
 		this.status = status;
 		this.heading = normalizeAngle(heading);
-		MovingObject.speed=speed;
+		this.speed=speed;
 	}
 
 
@@ -101,7 +101,7 @@ public abstract class MovingObject implements HasPoint {
 	 * @return the speed
 	 */
 	public double getSpeed() {
-		return MovingObject.speed;
+		return speed;
 	}
 
 
