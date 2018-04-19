@@ -1,10 +1,14 @@
 package sonc.quad;
 
+import java.util.Set;
+
 public abstract class Trie<T extends HasPoint>{
 	protected double topLeftX;
 	protected double topLeftY;
 	protected double bottomRightX;
 	protected double bottomRightY;
+	protected double centerX;
+	protected double centerY;
 	static int capacity;
 	
 	protected Trie(double topLeftX,double topLeftY,
@@ -13,14 +17,20 @@ public abstract class Trie<T extends HasPoint>{
 		this.topLeftY=topLeftY;
 		this.bottomRightX=bottomRightX;
 		this.bottomRightY=bottomRightY;
+		
+		this.centerX = (topLeftX + bottomRightX)/2;
+		this.centerY = (topLeftY + bottomRightY)/2;
 	}
 	
-	/*enum Quadrant { NE,NW,SE,SW }
-	public static final Trie.Quadrant NE;
-	public static final Trie.Quadrant NW;
-	public static final Trie.Quadrant SE;
-	public static final Trie.Quadrant SW;
-	*/
+	public enum Quadrant { NE,NW,SE,SW }
+	Quadrant getQuadrant(double x, double y){
+		
+		if(y<centerY && x<centerX)		return Quadrant.NE;
+		else if(y<centerY && x>centerX) return Quadrant.NW;
+		else if(y>centerY && x<centerX)	return Quadrant.SE;
+		else if(y>centerY && x>centerX)	return Quadrant.SW;
+		return null;
+	}
 	
 	/**
 	 * Get capacity of a bucket
@@ -61,7 +71,7 @@ public abstract class Trie<T extends HasPoint>{
 	 */
 	abstract Trie<T> insertReplace(T point);
 	/**
-	 * Collect points at a distance smaller or equal to radius from (x,y)
+	 * CollecSet<T> points at a distance smaller or equal to radius from (x,y)
 	 * and place them in given list
 	 * 
 	 * @param x coordinate of a point
@@ -69,13 +79,13 @@ public abstract class Trie<T extends HasPoint>{
 	 * @param radius from given point
 	 * @param points set of collecting points
 	 */
-	abstract void collectNear(double x, double y, double radius, T points);
+	abstract void collectNear(double x, double y, double radius, Set<T> points);
 	/**
 	 * Collect all points in this node and its descendants in given set
 	 * 
 	 * @param points set of HasPoint for collecting points
 	 */
-	abstract void collectAll(T points);
+	abstract void collectAll(Set<T> points);
 	/**
 	 * Deletes given point
 	 * 
