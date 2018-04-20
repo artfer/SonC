@@ -30,7 +30,11 @@ public class PointQuadtree<T extends HasPoint> {
 	 * @param point - to be inserted
 	 */
 	public void insert(T point) {
-		root.insert(point);
+		if(point.getX()>=root.topLeftX && point.getX()<=root.bottomRightX && point.getY()>=root.bottomRightY && point.getY()<=root.topLeftY)
+			root.insert(point);
+		else {
+			throw new PointOutOfBoundException();
+		}
 	}
 	
 	

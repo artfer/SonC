@@ -63,8 +63,9 @@ class LeafTrie<T extends HasPoint> extends Trie<T> {
 
 	@Override
 	void collectAll(Set<T> points) {
-		for(T p : this.points)
-			points.add(p);
+		points.addAll(this.points);
+		/*for(T p : this.points)
+			points.add(p);*/
 	}
 
 	

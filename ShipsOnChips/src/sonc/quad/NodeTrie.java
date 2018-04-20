@@ -31,9 +31,9 @@ class NodeTrie<T extends HasPoint> extends Trie<T>{
 	@Override
 	Trie<T> insert(T point) {
 		Quadrant quad = getQuadrant(point.getX(),point.getY());
-		if(quad==null) {
+		/*if(quad==null) {
 			throw new PointOutOfBoundException();
-		}
+		}*/
 		nodes.put(quad,nodes.get(quad).insert(point));
 		return this;
 	}
@@ -64,17 +64,4 @@ class NodeTrie<T extends HasPoint> extends Trie<T>{
 		Quadrant quad = getQuadrant(point.getX(),point.getY());
 		nodes.get(quad).delete(point);
 	}
-	
-	
-	
-	/*private int insideRadius(double x, double y, double radius) {
-	radius*=radius;
-	
-	return pow(-x)+pow(-y);
-}*/
-/*
-private static double pow(double n) {
-	return Math.pow(n, 2);
-}
-*/
 }

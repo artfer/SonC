@@ -34,12 +34,12 @@ public abstract class Trie<T extends HasPoint>{
 	public enum Quadrant { NE,NW,SE,SW }
 	
 	Quadrant getQuadrant(double x, double y){
-		/*if(x<topLeftX || x>bottomRightX || y>bottomRightY || y<topLeftY)
-			return null;*/
-		if(y<=centerY && x<=centerX)		return Quadrant.NW;
-		else if(y<=centerY && x>=centerX) return Quadrant.NE;
-		else if(y>=centerY && x<=centerX)	return Quadrant.SW;
-		else if(y>=centerY && x>=centerX)	return Quadrant.SE;
+		if(x<topLeftX || x>bottomRightX || y<bottomRightY || y>topLeftY)
+			return null;
+		if(y<=centerY && x<=centerX)		return Quadrant.SW;
+		else if(y<=centerY && x>=centerX) 	return Quadrant.SE;
+		else if(y>=centerY && x<=centerX)	return Quadrant.NW;
+		else if(y>=centerY && x>=centerX)	return Quadrant.NE;
 		return null;
 	}
 	
@@ -49,7 +49,7 @@ public abstract class Trie<T extends HasPoint>{
 	 * 
 	 * @return capacity
 	 */
-	public static int getCapacity(){//what is a bucket?
+	public static int getCapacity(){
 		return capacity;
 	}
 	
@@ -59,7 +59,7 @@ public abstract class Trie<T extends HasPoint>{
 	 * 
 	 * @param capacity of bucket
 	 */
-	public static void setCapacity(int capacity) {//again...what is a bucket?
+	public static void setCapacity(int capacity) {
 		Trie.capacity=capacity;
 	}
 	
