@@ -3,31 +3,34 @@ package sonc.quad;
 import java.util.HashSet;
 import java.util.Set;
 
+
+/**
+ * A {@link Trie} that has no descendants. 
+ * This class corresponds to the <b>Leaf</b> in the <b>Composite</b> design pattern.
+ */
 class LeafTrie<T extends HasPoint> extends Trie<T> {
 
 	Set<T> points;
 	
 	LeafTrie(double topLeftX, double topLeftY,
 			 double bottomRightX, double bottomRightY) {
+		
 		super(topLeftX, topLeftY, bottomRightX, bottomRightY);
-		// TODO Auto-generated constructor stub
 		
 		points = new HashSet<>();
-		
 	}
 
+	
 	@Override
 	T find(T point) {
-		// TODO Auto-generated method stub
 		if(points.contains(point))
 			return point;
 		return null;
 	}
 
+	
 	@Override
 	Trie<T> insert(T point) {
-		// TODO Auto-generated method stub
-		
 		if(points.size()<capacity) {
 			points.add(point);
 			return this;
@@ -40,25 +43,27 @@ class LeafTrie<T extends HasPoint> extends Trie<T> {
 
 	@Override
 	Trie<T> insertReplace(T point) {
-		// TODO Auto-generated method stub
+		for(T p : points) {
+			if(p.getX()==point.getX() && p.getY()==point.getY()) {
+				p=point;
+				return this;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	void collectNear(double x, double y, double radius, Set<T> points) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	void collectAll(Set<T> points) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	void delete(T point) {
-		// TODO Auto-generated method stub
 		points.remove(point);
 	}
 	
