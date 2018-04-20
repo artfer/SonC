@@ -7,7 +7,7 @@ public class PointQuadtree<T extends HasPoint> {
 
 	NodeTrie<T> root;
 	
-	PointQuadtree(double topLeftX,double topLeftY,double bottomRightX,double bottomRightY){
+	public PointQuadtree(double topLeftX,double topLeftY,double bottomRightX,double bottomRightY){
 		super();
 		root = new NodeTrie<>(topLeftX,topLeftY,bottomRightX,bottomRightY);
 	}

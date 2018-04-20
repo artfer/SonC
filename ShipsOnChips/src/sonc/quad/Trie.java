@@ -34,10 +34,12 @@ public abstract class Trie<T extends HasPoint>{
 	public enum Quadrant { NE,NW,SE,SW }
 	
 	Quadrant getQuadrant(double x, double y){
-		if(y<=centerY && x<=centerX)		return Quadrant.NE;
-		else if(y<=centerY && x>=centerX) return Quadrant.NW;
-		else if(y>=centerY && x<=centerX)	return Quadrant.SE;
-		else if(y>=centerY && x>=centerX)	return Quadrant.SW;
+		/*if(x<topLeftX || x>bottomRightX || y>bottomRightY || y<topLeftY)
+			return null;*/
+		if(y<=centerY && x<=centerX)		return Quadrant.NW;
+		else if(y<=centerY && x>=centerX) return Quadrant.NE;
+		else if(y>=centerY && x<=centerX)	return Quadrant.SW;
+		else if(y>=centerY && x>=centerX)	return Quadrant.SE;
 		return null;
 	}
 	

@@ -3,9 +3,8 @@ package sonc.battle;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import sonc.quad.PointQuadtree;
 import sonc.shared.Movie;
-import sonc.shared.SoncException;
 import sonc.utils.SafeExecutor;
 
 
@@ -29,12 +28,12 @@ public class World {
 	static int rounds,currentRound;
 	static double margin,width,height;
 	static double collisionDistance=10;
-	Set<MovingObject> movingObjects;
+	PointQuadtree<MovingObject> movingObjects;
 	Set<Ship> ships;
 	SafeExecutor safeExecutor; 
 	
 	World(){
-		movingObjects = new HashSet<>();
+		movingObjects = new PointQuadtree<MovingObject>(0,0,width,height);
 		safeExecutor = new SafeExecutor();
 		ships = new HashSet<>();
 	}
@@ -160,7 +159,7 @@ public class World {
 	 */
 	void addShipAtRandom(Ship ship) {
 		ships.add(ship);
-		movingObjects.add(ship);
+		movingObjects.insert(ship);
 	}
 	
 	
@@ -179,7 +178,7 @@ public class World {
 		if(x>width || x<0 || y>width || y<0)
 			/*throw new SoncException("Out of bounds");*/ 
 		ships.add(ship);
-		movingObjects.add(ship);
+		movingObjects.insert(ship);
 		ship.setX(x);
 		ship.setY(y);
 		ship.setHeading(heading);
@@ -243,7 +242,9 @@ public class World {
 	 * world instance.
 	 */
 	void update() {
-		
+		Set<MovingObject> all = movingObjects.getAll();
+		for(MovingObject mo : all)
+			mo.updatePosition();
 	}
 	
 	
@@ -252,7 +253,7 @@ public class World {
 	 * @param added - object
 	 */
 	void addMovingObject(MovingObject added) {
-		movingObjects.add(added);
+		movingObjects.insert(added);
 	}
 	
 	
@@ -263,7 +264,7 @@ public class World {
 	 * @return set of {@link MovingObject} instances
 	 */
 	Set<MovingObject> getMovingObjects(){
-		return movingObjects;
+		return movingObjects.getAll();
 	}
 	
 	
