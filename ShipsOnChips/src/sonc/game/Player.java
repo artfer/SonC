@@ -1,6 +1,5 @@
 package sonc.game;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.lang.String;
 
@@ -15,7 +14,7 @@ import sonc.utils.AgentBuilder;
  */
 @SuppressWarnings("serial")
 public class Player implements Serializable {
-	private String nick,password,code;
+	private String nick,password,code=null;
 	private Ship ship;
 	AgentBuilder builder;
 	

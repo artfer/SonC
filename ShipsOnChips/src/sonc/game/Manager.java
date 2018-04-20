@@ -39,7 +39,7 @@ public class Manager implements Serializable {
 	}
 	
 	
-	
+	/*
 	private void openOut() throws IOException {
 		fileOut = new FileOutputStream(managerFile);
 		out = new ObjectOutputStream(fileOut);
@@ -49,6 +49,9 @@ public class Manager implements Serializable {
 		out.close();
 		fileOut.close();
 	}
+	*/
+	
+	
 	
 	/**
 	 * Name of file containing manager's data.

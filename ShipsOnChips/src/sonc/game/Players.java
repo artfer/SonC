@@ -60,7 +60,7 @@ public class Players implements Serializable {
 	boolean authenticate(String nick,String password) {
 		for(Player p : players)
 			if(p.getNick().compareTo(nick)==0 
-			&& p.getPassword().compareTo(password)==0)
+			&& p.authenticate(password))
 				return true;
 		return false;
 	}
