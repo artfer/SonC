@@ -35,8 +35,8 @@ public abstract class Trie<T extends HasPoint>{
 	
 	Quadrant getQuadrant(double x, double y){
 		if(y<=centerY && x<=centerX)		return Quadrant.NE;
-		else if(y<centerY && x>centerX) return Quadrant.NW;
-		else if(y>centerY && x<centerX)	return Quadrant.SE;
+		else if(y<=centerY && x>=centerX) return Quadrant.NW;
+		else if(y>=centerY && x<=centerX)	return Quadrant.SE;
 		else if(y>=centerY && x>=centerX)	return Quadrant.SW;
 		return null;
 	}

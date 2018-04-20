@@ -36,7 +36,6 @@ class LeafTrie<T extends HasPoint> extends Trie<T> {
 			return this;
 		}
 		NodeTrie<T> node = new NodeTrie<T>(topLeftX,topLeftY,bottomRightX,bottomRightY);
-		//points.add(point);
 		node.insert(point);
 		for(T p : points) {
 			node.insert(p);
@@ -46,11 +45,11 @@ class LeafTrie<T extends HasPoint> extends Trie<T> {
 
 	@Override
 	Trie<T> insertReplace(T point) {
-		for(T p : points) {
+		for(T p : points) 
 			if(p.getX()==point.getX() && p.getY()==point.getY()) {
-				p=point;
+				points.remove(p);
+				points.add(point);
 				return this;
-			}
 		}
 		return null;
 	}

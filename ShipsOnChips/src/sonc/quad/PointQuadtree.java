@@ -1,5 +1,6 @@
 package sonc.quad;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class PointQuadtree<T extends HasPoint> {
@@ -53,9 +54,11 @@ public class PointQuadtree<T extends HasPoint> {
 	 * @return set of instances of type {@link HasPoint}
 	 */
 	public Set<T> findNear(double x,double y,double radius){
-		return root.findNear(x,y,radius);
+		Set<T> points=new HashSet<>();
+		root.collectNear(x, y, radius, points);
+		return points;
+		
 	}
-	
 	
 	/**
 	 * Delete given point from QuadTree, if it exists there.
@@ -72,7 +75,9 @@ public class PointQuadtree<T extends HasPoint> {
 	 * @return set of instances of type {@link HasPoint}
 	 */
 	public Set<T> getAll(){
-		return ;
+		Set<T> points=new HashSet<>();
+		root.collectAll(points);
+		return points;
 	}
 	
 	
