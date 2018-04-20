@@ -73,7 +73,6 @@ public class NodeTrieTest {
 	@Test  
 	public void testDuplicateInsertReplace() {
 		node.insert(CENTER);
-
 		node.insertReplace(CENTER);
 	}
 	

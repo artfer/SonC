@@ -35,9 +35,12 @@ class LeafTrie<T extends HasPoint> extends Trie<T> {
 			points.add(point);
 			return this;
 		}
-		Trie<T> node = new NodeTrie<T>(topLeftX,topLeftY,bottomRightX,bottomRightY);
-		points.add(point);
-		for(T p:points) node.insert(p);
+		NodeTrie<T> node = new NodeTrie<T>(topLeftX,topLeftY,bottomRightX,bottomRightY);
+		//points.add(point);
+		node.insert(point);
+		for(T p : points) {
+			node.insert(p);
+		}
 		return node;
 	}
 
@@ -54,14 +57,18 @@ class LeafTrie<T extends HasPoint> extends Trie<T> {
 
 	@Override
 	void collectNear(double x, double y, double radius, Set<T> points) {
-		
+		for(T p : this.points)
+			if(getDistance(p.getX(),p.getY(),x,y)<=radius)
+				points.add(p);
 	}
 
 	@Override
 	void collectAll(Set<T> points) {
-		
+		for(T p : this.points)
+			points.add(p);
 	}
 
+	
 	@Override
 	void delete(T point) {
 		points.remove(point);

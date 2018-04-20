@@ -31,25 +31,31 @@ class NodeTrie<T extends HasPoint> extends Trie<T>{
 	@Override
 	Trie<T> insert(T point) {
 		Quadrant quad = getQuadrant(point.getX(),point.getY());
-		return nodes.get(quad).insert(point);
+		if(quad==null)
+			return null;
+		nodes.put(quad,nodes.get(quad).insert(point));
+		return this;
 	}
 
 	
 	@Override
 	Trie<T> insertReplace(T point) {
-		return null;
+		Quadrant quad = getQuadrant(point.getX(),point.getY());
+		return nodes.get(quad).insertReplace(point);
 	}
 
 	
 	@Override
 	void collectNear(double x, double y, double radius, Set<T> points) {
-		
+		for(Quadrant quad : Quadrant.values())
+			nodes.get(quad).collectNear(x,y,radius,points);
 	}
 	
 	
 	@Override
 	void collectAll(Set<T> points) {
-		
+		for(Quadrant quad : Quadrant.values())
+			nodes.get(quad).collectAll(points);
 	}
 
 	@Override
